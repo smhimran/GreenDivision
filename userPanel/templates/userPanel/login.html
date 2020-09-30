@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>login</title>
+  </head>
+  <body>
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" placeholder="Email" />
+        <label for="pass">Password: </label>
+        <input
+          type="password"
+          name="password"
+          id="pass"
+          placeholder="Password"
+        />
+        <input type="submit" value="Login" />
+      </form>
+      {% if msg %}
+      <p>{{ msg }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

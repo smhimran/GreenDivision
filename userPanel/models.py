@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
+    email = models.EmailField(unique=True, null=True)
     varsity_id = models.CharField(max_length=100, unique=True)
     uri_link = models.URLField(max_length=100, unique=True)
     contact = models.CharField(max_length=100, blank=True, null=True)
