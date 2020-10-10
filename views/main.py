@@ -4,6 +4,8 @@ from userPanel.models import Profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django_email_verification import sendConfirm
+from django.core.mail import send_mail
+from GreenDivision.env import Forget_subject, Forget_body, ignore_message
 
 
 def user_login(request):

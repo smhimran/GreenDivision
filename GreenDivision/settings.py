@@ -134,3 +134,9 @@ EMAIL_MAIL_HTML = "userPanel/mail_body.html"
 EMAIL_MAIL_PLAIN = "userPanel/mail_body.txt"
 EMAIL_PAGE_TEMPLATE = "userPanel/confirm_template.html"
 EMAIL_PAGE_DOMAIN = "http://localhost:8000"
+
+EMAIL_BACKEND = env.EMAIL_BACKEND
+EMAIL_HOST = env.EMAIL_HOST
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env.Email_ID
+EMAIL_HOST_PASSWORD = env.Email_pass 
