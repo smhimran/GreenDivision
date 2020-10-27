@@ -9,6 +9,9 @@ verify_ssl = true
 django = "*"
 django-email-verification = "*"
 six = "*"
+bs4 = "*"
+lxml = "*"
+apscheduler = "*"
 
 [requires]
 python_version = "3.8"

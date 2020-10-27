@@ -152,3 +152,4 @@ dmypy.json
 GreenDivision/env.py
 db.sqlite3
 db.sqlite3
+scrapper_log.txt

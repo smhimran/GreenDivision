@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "userPanel",
+    "userPanel.apps.UserpanelConfig",
     "django_email_verification",
 ]
 
@@ -139,4 +139,4 @@ EMAIL_BACKEND = env.EMAIL_BACKEND
 EMAIL_HOST = env.EMAIL_HOST
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env.Email_ID
-EMAIL_HOST_PASSWORD = env.Email_pass 
+EMAIL_HOST_PASSWORD = env.Email_pass
