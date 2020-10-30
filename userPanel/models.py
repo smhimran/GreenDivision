@@ -27,7 +27,7 @@ class Profile(models.Model):
         ('Eligible', 'Eligible'),
         ('Blue', 'Blue'),
         ('Requested', 'Requested'),
-        ('Request from Blue'), ('Request from Blue'),
+        ('Request from Blue', 'Request from Blue'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
