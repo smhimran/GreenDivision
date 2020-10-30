@@ -7,7 +7,8 @@ import datetime
 from .models import Problem, Profile, Submission
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.utils import timezone
-import sys
+from django.db.models import Q
+
 
 # ----------------------------------------------------------------------------------------------------------
 # ## imported libraries
@@ -134,7 +135,8 @@ class uri_scraper(object):
 def scrape_data():
     print('Scrapper Started')
     start_time = time.time()
-    users = Profile.objects.all()
+    users = Profile.objects.filter(Q(status='Active') | Q(
+        status='Requested') | Q(status='Eligible'))
     problems = Problem.objects.all()
 
     timezone.now()
@@ -175,7 +177,19 @@ def scrape_data():
         user.total_scrapped = profile[1]
         # print(profile[0])
 
+        if len(profile[0]):
+            user.solve_count = user.solve_count + len(profile[0])
+            if user.status == 'Requested':
+                user.status = 'Active'
+        else:
+            if user.status == 'Requested':
+                user.status = 'Inactive'
+
+        if user.status == 'Request from Blue':
+            user.status = 'Blue'
+
         user.save()
+
         for submission in profile[0]:
             # print(submission[0])
             problem = Problem.objects.get(problem_id=submission[0])

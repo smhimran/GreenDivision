@@ -15,16 +15,35 @@ class Problem(models.Model):
 
 
 class Profile(models.Model):
+    Department_choices = (
+        ('CSE', 'Computer Science and Engineering'),
+        ('SWE', 'Softwear Engineering'),
+        ('Other', 'Other'),
+    )
+
+    Status_choices = (
+        ('Active', 'Active'),
+        ('Inactive', 'Inactive'),
+        ('Eligible', 'Eligible'),
+        ('Blue', 'Blue'),
+        ('Requested', 'Requested'),
+        ('Request from Blue'), ('Request from Blue'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
     email = models.EmailField(unique=True, null=True)
     varsity_id = models.CharField(max_length=100, unique=True)
+    department = models.CharField(
+        max_length=500, choices=Department_choices, null=True)
     uri_link = models.URLField(max_length=100, unique=True)
     contact = models.CharField(max_length=100, blank=True, null=True)
     show_email = models.BooleanField(default=False)
     show_number = models.BooleanField(default=False)
     total_scrapped = models.IntegerField(default=0)
+    solve_count = models.IntegerField(default=0)
     solved_problems = models.ManyToManyField(Problem, through='Submission')
+    status = models.CharField(
+        max_length=150, choices=Status_choices, default='Active')
 
     def __str__(self):
         return self.varsity_id
