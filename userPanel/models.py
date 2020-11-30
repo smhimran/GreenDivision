@@ -41,6 +41,7 @@ class Profile(models.Model):
     show_number = models.BooleanField(default=False)
     total_scrapped = models.IntegerField(default=0)
     solve_count = models.IntegerField(default=0)
+    last_submission_time = models.DateTimeField(blank=True, null=True)
     solved_problems = models.ManyToManyField(Problem, through='Submission')
     status = models.CharField(
         max_length=150, choices=Status_choices, default='Active')

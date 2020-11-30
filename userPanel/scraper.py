@@ -190,11 +190,18 @@ def scrape_data():
 
         user.save()
 
+        min_date = datetime.datetime.now()
+
         for submission in profile[0]:
             # print(submission[0])
+            min_date = min(min_date, submission[2])
             problem = Problem.objects.get(problem_id=submission[0])
             solve = Submission.objects.create(user=user, problem=problem,
                                               language=submission[1], dateTime=submission[2])
+
+        user.last_submission_time = min_date
+
+        user.save()
 
     fp = open("scrapper_log.txt", 'a')
     fp.write("\n\n>>Scraper Runtime: %s seconds\n" %
