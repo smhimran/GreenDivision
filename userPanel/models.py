@@ -32,6 +32,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
     email = models.EmailField(unique=True, null=True)
+    image = models.URLField(blank=True, null=True)
     varsity_id = models.CharField(max_length=100, unique=True)
     department = models.CharField(
         max_length=500, choices=Department_choices, null=True)

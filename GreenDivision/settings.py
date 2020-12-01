@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from . import env
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+cloudinary.config(
+    cloud_name=env.CLOUDINARY_CLOUD_NAME,
+    api_key=env.CLOUDINARY_API_KEY,
+    api_secret=env.CLOUDINARY_API_SECRET
+)
 
 # Application definition
 

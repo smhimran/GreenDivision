@@ -12,6 +12,7 @@ six = "*"
 bs4 = "*"
 lxml = "*"
 apscheduler = "*"
+cloudinary = "*"
 
 [requires]
 python_version = "3.8"
