@@ -19,7 +19,7 @@ def user_login(request):
 
         if user:
             login(request, user)
-            return redirect("user:index")
+            return redirect("user:standings")
         else:
             msg = "Error"
             return render(request, "userPanel/login.html", {"msg": msg})
@@ -27,12 +27,12 @@ def user_login(request):
 
 def sign_up(request):
     if request.method == "GET":
-        return render(request, "userPanel/register.html")
+        return render(request, "userPanel/registration.html")
     else:
         name = request.POST.get("name")
         email = request.POST.get("email")
         varsity_id = request.POST.get("id")
-        username = request.POST.get("username")
+        username = varsity_id
         url = request.POST.get("url")
         password = request.POST.get("password")
 
@@ -52,4 +52,4 @@ def sign_up(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect("user:index")
+    return redirect("login")

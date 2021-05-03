@@ -1,26 +1,65 @@
-<html>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
   <head>
-    <title>login</title>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static "userPanel/index.css" %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
     <div class="container">
+      <header>Login</header>
       <form method="post">
-        {% csrf_token %}
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email" placeholder="Email" />
-        <label for="pass">Password: </label>
-        <input
-          type="password"
-          name="password"
-          id="pass"
-          placeholder="Password"
-        />
-        <input type="submit" value="Login" />
+      {% csrf_token %}
+        <div class="input-field">
+          <input type="text" name="email" required>
+          <label>Email or Student ID</label>
+        </div>
+        <div class="input-field">
+          <input class="pswrd" name="password" type="password" required>
+          <span class="show">SHOW</span>
+          <label>Password</label>
+        </div>
+            <input type="Submit" class="btn" value="Login">
       </form>
-      <a href="{% url 'password_reset' %}"> Forgot Password? </a>
-      {% if msg %}
-      <p>{{ msg }}</p>
-      {% endif %}
-    </div>
+   
+
+
+        <div class="signup">
+        <a href="{% url 'password_reset' %}">Forget Password?</a>  Not a member? <a href="{% url 'register' %}">Register</a>
+        </div>
+
+        {% if msg %}
+        <p>{{msg}}</p>
+        {% endif %}
+</div>
+<script>
+      var input = document.querySelector('.pswrd');
+      var show = document.querySelector('.show');
+      show.addEventListener('click', active);
+      function active(){
+        if(input.type === "password"){
+          input.type = "text";
+          show.style.color = "#1DA1F2";
+          show.textContent = "HIDE";
+        }else{
+          input.type = "password";
+          show.textContent = "SHOW";
+          show.style.color = "#111";
+        }
+      }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
   </body>
-</html>
+
+  </html>

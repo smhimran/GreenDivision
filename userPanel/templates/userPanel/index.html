@@ -1,10 +1,12 @@
-<html>
-  <head></head>
-  <body>
-    <p>Hello World</p>
-
-    {% if request.user.is_authenticated == True %}
-    <a href="{% url 'logout' %}">Logout</a>
-    {% endif %}
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Index
+    <a href="{% url 'logout' %}">logout</a>
+</body>
 </html>
