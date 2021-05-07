@@ -8,13 +8,13 @@ def index(request):
 
 
 def standings(request):
-    beginner = Problem.objects.filter(category="Beginner")
+    beginner = Problem.objects.filter(category="Input/Output")
     beginner_count = len(beginner)
 
     ifelse = Problem.objects.filter(category="If-else")
     ifelse_count = len(ifelse)
 
-    maths = Problem.objects.filter(category="Math")
+    maths = Problem.objects.filter(category="Geometry")
     maths_count = len(maths)
 
     profiles_list = Profile.objects.order_by(
