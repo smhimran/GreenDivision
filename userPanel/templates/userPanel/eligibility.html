@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="Standings">
+      <div class="header">
+        <a class="logo" style="color: #0a0" href="index.html">Green Division</a>
+        <div class="accounts mb-2">
+          <a href="login.html" class="btn btn-outline-success"
+            ><span><i class="fa fa-sign-in"></i></span> Login</a
+          >
+          |
+          <a href="register.html" class="btn btn-outline-secondary"
+            ><span><i class="fa fa-user-plus"></i></span> Register</a
+          >
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html"
+                  >Standings</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index2.html">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="eligibility.html"
+                  >Eligibility</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About US</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="eligibility">
+        <h3 class="my-5" style="color: #0a0; text-align: center">
+          Eligibility
+        </h3>
+
+        <!-- <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav> -->
+        <div class="container">
+          <div class="card mb-5 cat1">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #ffc107">
+                Input/Output
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps" id="ps">50%</span>
+              <div class="progress" >
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                </div>
+
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-5 cat2">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #6c757d">
+                Simple Math
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">60%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-5 cat3">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #0dcaf0">
+                Condition
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">70%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-5 cat4">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #0d6efd">
+                Loop
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">40%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-5 cat5">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #dc3545">
+                GEO
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">30%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-5 cat6">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #20c997">
+                Array/Simple DS
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+                <h6>Your Progress</h6>
+              <span class="pull-right ps">90%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="card mb-5 cat7">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #2081bf">
+                String
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">80%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="card mb-4 cat8">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; color: #806248">
+                Ad-hoc
+              </h5>
+              <div class="card-body">
+                <h6>Total Problems:</h6>
+                <h6 class="mb-5">Solved:</h6>
+              <h6>Your Progress</h6>
+              <span class="pull-right ps">50%</span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style=" background-color: #0a0"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="blue" style="padding-bottom: 40px;">
+            <section>
+              <h4 class="txt" id="txt">Please solve more to apply for Bluesheet...</h4>
+              <a href="#" class="btn btn-primary btn-md disabled  pull-right blbtn" role="button" id="blbtn" >Apply for Blue</a>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+        </div>
+
+        
+
+        
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      console.log("Hello");
+      let bars = document.getElementsByClassName("ps");
+      let progress = document.getElementsByClassName("progress-bar");
+      let f = 0;
+      for (let i = 0; i < bars.length; i++) {
+        let value = parseInt(bars[i].innerHTML.substr(0, bars.length-1));
+        progress[i].style.width = value+"%";
+        if (value >= 60) {
+          progress[i].style.backgroundColor = "#0d6efd";
+           f++;
+
+        }
+        
+      }
+      console.log(f);
+
+      if(bars.length === f){
+
+        console.log("Hello kaniz");
+        let txt = document.getElementById("txt");
+        let btn = document.getElementById("blbtn");
+        txt.innerHTML= "Congratulations you are elligible for Blue";
+        btn.classList.remove("disabled");
+      }
+    </script>
+  </body>
+</html>
