@@ -1,0 +1,29 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block body %}
+      <div class="main">
+        <h5
+          style="
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 15px;
+            color: #0a0;
+          "
+        >
+          Login into Blue Profile
+        </h5>
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

@@ -6,14 +6,11 @@ from . import settings
 from views import main
 
 urlpatterns = [
-    path("", include("userPanel.urls", namespace="user")),
-    path("accounts/login/", main.user_login, name="login"),
-    path("accounts/logout/", main.user_logout, name="logout"),
-    path("register/", main.sign_up, name="register"),
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path("", include("public.urls", namespace="public")),
+    path("user/", include("userPanel.urls", namespace="user")),
+    path("accounts/", include("accounts.urls",namespace="accounts")),
+
+    # URL path for sending emails
     path("email/", include(mail_urls)),
 ]
 

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "userPanel.apps.UserpanelConfig",
+    "accounts",
+    "public",
     "django_email_verification",
 ]
 

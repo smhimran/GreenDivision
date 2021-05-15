@@ -5,6 +5,7 @@ app_name = "user"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("standings/", views.standings, name="standings"),
-    path('profile/', views.user_profile, name="profile"),
+    # path("standings/", views.standings, name="standings"),
+    # path('profile/', views.user_profile, name="profile"),
+    path('eligibility/', views.eligibility, name="eligiblilty"),
 ]
