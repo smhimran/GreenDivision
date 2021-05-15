@@ -32,7 +32,7 @@
                             </li>
                             {% if request.user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="index2.html"
+                                <a class="nav-link" href="{% url 'public:profile' request.user.id %}"
                                     >Profile</a
                                 >
                             </li>

@@ -5,15 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def standings(request):
-    beginner = Problem.objects.filter(category="Input/Output")
-    beginner_count = len(beginner)
-
-    ifelse = Problem.objects.filter(category="If-else")
-    ifelse_count = len(ifelse)
-
-    maths = Problem.objects.filter(category="Geometry")
-    maths_count = len(maths)
-
+    
     profiles_list = Profile.objects.order_by(
         '-solve_count', 'last_submission_time')
 
@@ -44,19 +36,59 @@ def standings(request):
     except EmptyPage:
         profiles = paginator.page(paginator.num_pages)
 
-    return render(request, "public/index.html", {
-        "beginners": beginner, "ifelse": ifelse, "maths": maths,
-        "beginner_count": beginner_count, "ifelse_count": ifelse_count,
-        "maths_count": maths_count, "profiles": profiles
-    })
+    return render(request, "public/index.html", {"profiles": profiles})
 
 
 def user_profile(request, id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user=user)
-    submissions = Submission.objects.filter(user=profile).order_by('dateTime')
+    submissions = Submission.objects.filter(user=profile).order_by('problem')
+    # problems = Problem.objects.all()
 
-    return render(request, 'public/profile.html', {'profile': profile, "submissions": submissions})
+    beginner = list(Problem.objects.filter(category="Input/Output"))
+    beginner_count = len(beginner)
+
+    ifelse = list(Problem.objects.filter(category="If-else"))
+    ifelse_count = len(ifelse)
+
+    geo = list(Problem.objects.filter(category="Geometry"))
+    geo_count = len(geo)
+
+
+    for problem in beginner:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in ifelse:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in geo:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    return render(request, 'public/profile.html', {'profile': profile, "beginner": beginner, "ifelse": ifelse, "geo": geo, 
+                                                    "beginner_count": beginner_count, 
+                                                    "ifelse_count": ifelse_count, 
+                                                    "geo_count": geo_count})
 
 
 def eligibility(request, id):
