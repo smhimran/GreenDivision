@@ -12,12 +12,12 @@ def user_login(request):
     else:
         email = request.POST.get("email")
         password = request.POST.get("password")
-        profile = Profile.objects.get(email=email)
-        user = authenticate(username=profile.user.username, password=password)
+        user = User.objects.get(email=email)
+        user = authenticate(username=user.username, password=password)
 
         if user:
             login(request, user)
-            return redirect("user:standings")
+            return redirect("public:index")
         else:
             msg = "Error"
             return render(request, "accounts/login.html", {"msg": msg})
