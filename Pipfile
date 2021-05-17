@@ -7,12 +7,14 @@ verify_ssl = true
 
 [packages]
 django = "*"
-django-email-verification = "*"
+django-email-verification = "==0.0.7"
 six = "*"
 bs4 = "*"
 lxml = "*"
 apscheduler = "*"
 cloudinary = "*"
+django-environ = "*"
+pillow = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
