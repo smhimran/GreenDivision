@@ -34,6 +34,7 @@ def sign_up(request):
         image = request.FILES.get("image")
         username = varsity_id
         url = request.POST.get("url")
+        contact = request.POST.get("contact")
         password = request.POST.get("password")
         conPassword = request.POST.get("conPassword")
 
@@ -57,7 +58,7 @@ def sign_up(request):
                 link = uploaded["url"]
 
                 Profile.objects.create(
-                    user=user, name=name, image=link, department=department, varsity_id=varsity_id, uri_link=url
+                    user=user, name=name, image=link, department=department, contact=contact, varsity_id=varsity_id, uri_link=url
                 )
 
             else:

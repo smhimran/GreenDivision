@@ -72,8 +72,8 @@
                         {% for profile in profiles%}
                         <tr>
                             <th scope="row" class="text-center">{{ forloop.counter }}</th>
-                            <td> <a href="{% url 'public:profile' profile.user.id %}"> {{ profile.name }} </a> </td>
-                            <td> <a href="{{ profile.uri_link }}"> {{ profile.name }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{% url 'public:profile' profile.user.id %}"> {{ profile.name }} </a> </td>
+                            <td> <a target="_blank" class="text-decoration-none" href="{{ profile.uri_link }}"> {{ profile.name }} </a> </td>
                             <td class="cnt text-center">{{ profile.solve_count }}</td>
                         </tr>
 

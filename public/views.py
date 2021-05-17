@@ -48,11 +48,26 @@ def user_profile(request, id):
     beginner = list(Problem.objects.filter(category="Input/Output"))
     beginner_count = len(beginner)
 
-    ifelse = list(Problem.objects.filter(category="If-else"))
-    ifelse_count = len(ifelse)
+    condition = list(Problem.objects.filter(category="Condition"))
+    condition_count = len(condition)
 
     geo = list(Problem.objects.filter(category="Geometry"))
     geo_count = len(geo)
+
+    math = list(Problem.objects.filter(category="Simple Math"))
+    math_count = len(math)
+
+    loop = list(Problem.objects.filter(category="Loop"))
+    loop_count = len(loop)
+
+    array = list(Problem.objects.filter(category="Array/Simple DS"))
+    array_count = len(array)
+
+    string = list(Problem.objects.filter(category="String"))
+    string_count = len(string)
+
+    adhoc = list(Problem.objects.filter(category="Ad-hoc"))
+    adhoc_count = len(adhoc)
 
 
     for problem in beginner:
@@ -65,7 +80,57 @@ def user_profile(request, id):
             problem.time = '-'
             problem.solved = False
 
-    for problem in ifelse:
+    for problem in condition:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in math:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in loop:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in array:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in string:
+        time = submissions.filter(problem=problem)
+
+        if time.exists():
+            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.solved = True
+        else:
+            problem.time = '-'
+            problem.solved = False
+
+    for problem in adhoc:
         time = submissions.filter(problem=problem)
 
         if time.exists():
@@ -85,10 +150,17 @@ def user_profile(request, id):
             problem.time = '-'
             problem.solved = False
 
-    return render(request, 'public/profile.html', {'profile': profile, "beginner": beginner, "ifelse": ifelse, "geo": geo, 
+    return render(request, 'public/profile.html', {'profile': profile, "beginner": beginner, "condition": condition, "geo": geo, 
+                                                    "math": math, "loop": loop, 'array': array, "string": string, "adhoc": adhoc,
                                                     "beginner_count": beginner_count, 
-                                                    "ifelse_count": ifelse_count, 
-                                                    "geo_count": geo_count})
+                                                    "condition_count": condition_count, 
+                                                    "geo_count": geo_count,
+                                                    "math_count": math_count,
+                                                    "loop_count": loop_count,
+                                                    "array_count": array_count,
+                                                    "string_count": string_count,
+                                                    "adhoc_count": adhoc_count,
+                                                    })
 
 
 def eligibility(request, id):

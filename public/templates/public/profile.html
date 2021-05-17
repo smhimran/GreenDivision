@@ -83,6 +83,20 @@
                         <strong>URI Profile: </strong> <a target="_blank" class="text-decoration-none" href="{{ profile.uri_link }}">{{ profile.name }} </a>
                     </li>
                     
+                    {% if profile.show_email %}
+                    <li>
+                        <i class="fa fa-envelope-o icon text-success"></i>
+                        <strong>Email: </strong> {{ profile.user.email }}
+                    </li>
+                    {% endif %}
+
+                    {% if profile.show_number %}
+                    <li>
+                        <i class="fa fa-phone icon text-success"></i>
+                        <strong>Contact Number: </strong> {{ profile.contact }}
+                    </li>
+                    {% endif %}
+
                     <li>
                         <i class="fa fa-lightbulb-o icon text-success"></i>
                         <strong>Status: 
@@ -162,14 +176,72 @@
 
                     {% endfor %}
 
-                    {% for problem in ifelse %}
+                    {% for problem in math %}
                         <tr>
                             {%  if forloop.first %}
                             <td
-                                rowspan="{{ ifelse_count }}"
+                                rowspan="{{ math_count }}"
+                                class="bg-secondary align-middle text-center"
+                            >
+                                Simple Math
+                            </td>
+                            {% endif %}
+                            <!-- <th scope="row" class="text-center">1</th> -->
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
+                            <td class="cnt text-center">
+                                <span>
+                                {% if problem.solved %}
+                                    <i class="fa fa-check"> Accepted</i>
+                                {% else %}
+                                 &nbsp;
+
+                                {% endif %}
+                                </span>
+
+                            </td>
+                            <td class="text-center">{{ problem.time }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    {% for problem in condition %}
+                        <tr>
+                            {%  if forloop.first %}
+                            <td
+                                rowspan="{{ condition_count }}"
                                 class="bg-info align-middle text-center"
                             >
                                 If-else
+                            </td>
+                            {% endif %}
+                            <!-- <th scope="row" class="text-center">1</th> -->
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
+                            <td class="cnt text-center">
+                                <span>
+                                {% if problem.solved %}
+                                    <i class="fa fa-check"> Accepted</i>
+                                {% else %}
+                                 &nbsp;
+
+                                {% endif %}
+                                </span>
+
+                            </td>
+                            <td class="text-center">{{ problem.time }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    {% for problem in loop %}
+                        <tr>
+                            {%  if forloop.first %}
+                            <td
+                                rowspan="{{ loop_count }}"
+                                class="bg-primary align-middle text-center"
+                            >
+                                Loop
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
@@ -196,7 +268,8 @@
                             {%  if forloop.first %}
                             <td
                                 rowspan="{{ geo_count }}"
-                                class="bg-primary align-middle text-center"
+                                class="align-middle text-center"
+                                style="background-color: #dc3545"
                             >
                                 Geometry
                             </td>
@@ -220,549 +293,97 @@
 
                     {% endfor %}
 
-                        {% comment %} <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 443</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
+                    {% for problem in array %}
                         <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101498B</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 265B (D)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 266B (E)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr> {% endcomment %}
-                        <tr>
+                            {%  if forloop.first %}
                             <td
-                                rowspan="4"
-                                class="bg-secondary align-middle text-center"
-                            >
-                                Simple Math
-                            </td>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 267A (G)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 265A (B)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101744G</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101744G (K)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <td
-                                rowspan="6"
-                                class="bg-info align-middle text-center"
-                            >
-                                Condition
-                            </td>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1090</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1090</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 10220</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1138</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 793</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 1027A (A)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <td
-                                rowspan="7"
-                                class="bg-primary align-middle text-center"
-                            >
-                                Loop
-                            </td>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 7035</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 640</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 6977</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 6977</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-
-                        <tr>
-                            <td
-                                rowspan="5"
-                                class="align-middle text-center"
-                                style="background-color: #dc3545"
-                            >
-                                GEO
-                            </td>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 10812</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 443</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101498B</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 265B (D)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 266B (E)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <td
-                                rowspan="4"
+                                rowspan="{{ array_count }}"
                                 class="align-middle text-center"
                                 style="background-color: #20c997"
                             >
-                                Array/Simple DS
+                                Array/Simple Data Structure
                             </td>
+                            {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 267A (G)</td>
-                            <td>Beat the Spread!</td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
+                                <span>
+                                {% if problem.solved %}
+                                    <i class="fa fa-check"> Accepted</i>
+                                {% else %}
+                                 &nbsp;
+
+                                {% endif %}
+                                </span>
+
                             </td>
-                            <td class="text-center">January 26 15:58</td>
+                            <td class="text-center">{{ problem.time }}</td>
                         </tr>
+
+                    {% endfor %}
+
+                    {% for problem in string %}
                         <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 265A (B)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101744G</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>Gym 101744G (K)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
+                            {%  if forloop.first %}
                             <td
-                                rowspan="6"
+                                rowspan="{{ string_count }}"
                                 class="align-middle text-center"
                                 style="background-color: #2081bf"
                             >
                                 String
                             </td>
+                            {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1090</td>
-                            <td>Beat the Spread!</td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
+                                <span>
+                                {% if problem.solved %}
+                                    <i class="fa fa-check"> Accepted</i>
+                                {% else %}
+                                 &nbsp;
+
+                                {% endif %}
+                                </span>
+
                             </td>
-                            <td class="text-center">January 26 15:58</td>
+                            <td class="text-center">{{ problem.time }}</td>
                         </tr>
+
+                    {% endfor %}
+
+                    {% for problem in adhoc %}
                         <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1090</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 10220</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>LightOJ 1138</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 793</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>CodeForces 1027A (A)</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
+                            {%  if forloop.first %}
                             <td
-                                rowspan="7"
+                                rowspan="{{ adhoc_count }}"
                                 class="align-middle text-center"
                                 style="background-color: #806248"
                             >
                                 Ad-hoc
                             </td>
+                            {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 7035</td>
-                            <td>Beat the Spread!</td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
+                                <span>
+                                {% if problem.solved %}
+                                    <i class="fa fa-check"> Accepted</i>
+                                {% else %}
+                                 &nbsp;
+
+                                {% endif %}
+                                </span>
+
                             </td>
-                            <td class="text-center">January 26 15:58</td>
+                            <td class="text-center">{{ problem.time }}</td>
                         </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 640</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 6977</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVALive 6977</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                        <tr>
-                            <!-- <th scope="row" class="text-center">1</th> -->
-                            <td>UVA 459</td>
-                            <td>Beat the Spread!</td>
-                            <td class="cnt text-center">
-                                <span
-                                    ><i class="fa fa-check"> Accepted</i></span
-                                >
-                            </td>
-                            <td class="text-center">January 26 15:58</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- <nav aria-label="...">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item" aria-current="page">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav> -->
+
+                    {% endfor %}
+
+                      
             </div>
         </div>
 {% endblock %}
