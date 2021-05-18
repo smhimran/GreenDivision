@@ -127,6 +127,11 @@
                         <i class="fa fa-flag icon text-success"></i>
                         <a class="text-success" href="#solve">{{ profile.solve_count }}</a>
                     </li>
+
+                    <li>
+                    <a href="{% url 'public:eligiblilty' profile.user.id %}" class="btn btn-outline-primary">Check Eligibility</a>
+                    </li>
+
                 </ul>
             </div>
             <div class="solvelist" id="solve">
