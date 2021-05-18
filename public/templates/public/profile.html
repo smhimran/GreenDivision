@@ -80,7 +80,7 @@
                     
                     <li>
                         <i class="fa fa-external-link-square icon text-success"></i>
-                        <strong>URI Profile: </strong> <a target="_blank" class="text-decoration-none" href="{{ profile.uri_link }}">{{ profile.name }} </a>
+                        <strong>URI Profile: </strong> <a target="_blank" class="text-decoration-none" href="{{ profile.uri_link }}">{{ profile.uri_link }} </a>
                     </li>
                     
                     {% if profile.show_email %}
@@ -140,8 +140,8 @@
                                 Category
                             </th>
                             <!-- <th scope="col" class="text-center text-bold">#</th> -->
-                            <th scope="col">Problem ID</th>
-                            <th scope="col">Problem Name</th>
+                            <th scope="col" class="text-center">Problem ID</th>
+                            <th scope="col" class="text-center">Problem Name</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Time</th>
                         </tr>
@@ -152,13 +152,14 @@
                             {%  if forloop.first %}
                             <td
                                 rowspan="{{ beginner_count }}"
-                                class="bg-warning align-middle text-center"
+                                class="align-middle text-center"
+                                style="background-color: rgba(40, 250, 3, 0.7);"
                             >
                                 Input/Output
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a target="_blank" class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a target="_blank" class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a target="_blank" class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -181,13 +182,14 @@
                             {%  if forloop.first %}
                             <td
                                 rowspan="{{ math_count }}"
-                                class="bg-secondary align-middle text-center"
+                                class="align-middle text-center"
+                                style="background-color: rgba(190, 250, 3, 0.7);"
                             >
                                 Simple Math
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -210,13 +212,14 @@
                             {%  if forloop.first %}
                             <td
                                 rowspan="{{ condition_count }}"
-                                class="bg-info align-middle text-center"
+                                class="align-middle text-center"
+                                style="background-color: rgba(252, 162, 3, 0.7);"
                             >
                                 If-else
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -239,13 +242,14 @@
                             {%  if forloop.first %}
                             <td
                                 rowspan="{{ loop_count }}"
-                                class="bg-primary align-middle text-center"
+                                class="align-middle text-center"
+                                style="background-color: rgba(3, 152, 252, 0.7);"
                             >
                                 Loop
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -269,13 +273,13 @@
                             <td
                                 rowspan="{{ geo_count }}"
                                 class="align-middle text-center"
-                                style="background-color: #dc3545"
+                                style="background-color: rgba(3, 73, 252, 0.6);"
                             >
                                 Geometry
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -299,13 +303,13 @@
                             <td
                                 rowspan="{{ array_count }}"
                                 class="align-middle text-center"
-                                style="background-color: #20c997"
+                                style="background-color: rgba(144, 3, 252, 0.5);"
                             >
                                 Array/Simple Data Structure
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -329,13 +333,13 @@
                             <td
                                 rowspan="{{ string_count }}"
                                 class="align-middle text-center"
-                                style="background-color: #2081bf"
+                                style="background-color: rgba(252, 48, 3, 0.7);"
                             >
                                 String
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>
@@ -359,13 +363,13 @@
                             <td
                                 rowspan="{{ adhoc_count }}"
                                 class="align-middle text-center"
-                                style="background-color: #806248"
+                                style="background-color: rgba(256, 1, 1, 0.8);"
                             >
                                 Ad-hoc
                             </td>
                             {% endif %}
                             <!-- <th scope="row" class="text-center">1</th> -->
-                            <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
+                            <td class="text-center"> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.problem_id }} </a> </td>
                             <td> <a class="text-decoration-none" href="{{ problem.url }}">{{ problem.name }} </a> </td>
                             <td class="cnt text-center">
                                 <span>

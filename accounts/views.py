@@ -12,14 +12,24 @@ def user_login(request):
     else:
         email = request.POST.get("email")
         password = request.POST.get("password")
-        user = User.objects.get(email=email)
-        user = authenticate(username=user.username, password=password)
+        try:
+            user = User.objects.get(email=email)
 
-        if user:
-            login(request, user)
-            return redirect("public:index")
-        else:
-            msg = "Error"
+            if user.is_active == False:
+                msg = "Account is not active, you need to activate your account before login. An account activation link has been sent to your mailbox."
+                return render(request, "accounts/login.html", {"msg": msg})
+
+            user = authenticate(username=user.username, password=password)
+
+            if user:
+                login(request, user)
+                return redirect("public:index")
+            else:
+                msg = "Incorrect Password!"
+                return render(request, "accounts/login.html", {"msg": msg})
+        
+        except User.DoesNotExist:
+            msg = "No such user!"
             return render(request, "accounts/login.html", {"msg": msg})
 
 
