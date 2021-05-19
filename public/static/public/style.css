@@ -88,6 +88,7 @@ form {
   border-radius: 2px;
 }
 
+
 .cat1 {
   box-shadow: 0 0.5rem 0.5rem #ffc107;
 }
@@ -127,8 +128,11 @@ form {
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .info {
-    height: 500px;
+    height: auto;
+    min-height: 300px !important;
     text-align: center;
+
+    overflow-x: scroll;
   }
 
   .main {
@@ -136,10 +140,15 @@ form {
   }
 
   img {
-    text-align: center;
-    display: block;
+    /* text-align: center; */
+    display: inline-block;
     margin-bottom: 30px;
   }
+
+  .solve-table {
+    overflow-x: scroll;
+  }
+
   .card-group {
     grid-template-columns: 1fr;
   }
