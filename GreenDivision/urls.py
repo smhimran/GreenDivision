@@ -10,6 +10,13 @@ urlpatterns = [
     path("user/", include("userPanel.urls", namespace="user")),
     path("accounts/", include("accounts.urls",namespace="accounts")),
 
+    # Auth urls (Important for default password reset)
+
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
     # URL path for sending emails
     path("email/", include(mail_urls)),
 ]
