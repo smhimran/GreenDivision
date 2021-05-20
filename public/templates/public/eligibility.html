@@ -1,4 +1,10 @@
-{% extends 'public/base.html'%} {% load static%} {% block body %}
+{% extends 'public/base.html'%} {% load static%}
+
+{% block title %}
+<title>Eligibility | {{ profile.name }} | Green Division</title>
+{% endblock %}
+
+ {% block body %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
   <div class="container-fluid">
