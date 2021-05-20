@@ -1,60 +1,56 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Problem, Profile, Submission
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from cloudinary import uploader, api
 
+@login_required
+def editprofile(request):
+    if request.method == "GET":
+        user = request.user
+        profile = Profile.objects.get(user=user)
 
-def index(request):
-    return render(request, "userPanel/index.html")
+        return render(request, "userPanel/editprofile.html", {"profile": profile})
 
+    else:
+        user = request.user
+        profile = Profile.objects.get(user=user)
 
-def standings(request):
-    beginner = Problem.objects.filter(category="Input/Output")
-    beginner_count = len(beginner)
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        department = request.POST.get("department")
+        varsity_id = request.POST.get("varsity_id")
+        uri_link = request.POST.get("uri_link")
+        contact = request.POST.get("contact")
+        image = request.FILES.get("image")
+        show_email = request.POST.get("showemail")
+        show_contact = request.POST.get("showcontact")
 
-    ifelse = Problem.objects.filter(category="If-else")
-    ifelse_count = len(ifelse)
+        if show_email == "on":
+            show_email = True
+        else:
+            show_email = False
 
-    maths = Problem.objects.filter(category="Geometry")
-    maths_count = len(maths)
+        if show_contact == "on":
+            show_contact = True
+        else:
+            show_contact = False
 
-    profiles_list = Profile.objects.order_by(
-        '-solve_count', 'last_submission_time')
+        if image:
+            uploaded = uploader.upload(image)
+            link = uploaded["url"]
+            profile.image = link
 
-    n = 1
-    user = request.user
-    user = Profile.objects.get(user=user)
+        profile.name = name
+        user.email = email
+        profile.department = department
+        # profile.varsity_id = varsity_id
+        profile.uri_link = uri_link
+        profile.contact = contact
+        profile.show_email = show_email
+        profile.show_number = show_contact
 
-    for i, item in enumerate(profiles_list):
-        if item == user:
-            n = i+1
-            break
+        user.save()
+        profile.save()
 
-    n = (n // 10) + 1
-
-    paginator = Paginator(profiles_list, 10)
-
-    page = request.GET.get('page', 1)
-
-    try:
-        profiles = paginator.page(page)
-    except PageNotAnInteger:
-        profiles = paginator.page(n)
-    except EmptyPage:
-        profiles = paginator.page(paginator.num_pages)
-
-    return render(request, "userPanel/standings.html", {
-        "beginners": beginner, "ifelse": ifelse, "maths": maths,
-        "beginner_count": beginner_count, "ifelse_count": ifelse_count,
-        "maths_count": maths_count, "profiles": profiles
-    })
-
-
-def user_profile(request):
-    profile = Profile.objects.get(user=request.user)
-    submissions = Submission.objects.filter(user=profile).order_by('dateTime')
-
-    return render(request, 'userPanel/index2.html', {'profile': profile, "submissions": submissions})
-
-
-def eligibility(request):
-    return render(request, 'userPanel/eligibility.html')
+        return redirect("public:profile", id=user.id)

@@ -16,8 +16,8 @@ class Problem(models.Model):
 
 class Profile(models.Model):
     Department_choices = (
-        ('CSE', 'Computer Science and Engineering'),
-        ('SWE', 'Softwear Engineering'),
+        ('Computer Science and Engineering', 'Computer Science and Engineering'),
+        ('Softwear Engineering', 'Softwear Engineering'),
         ('Other', 'Other'),
     )
 

@@ -124,21 +124,21 @@
                         {% endif %}
                         </strong>
                     </li>
-                    
-                    {% if request.user.is_authenticated and profile.user.id == request.user.id %}
-                    <li>
-                        <i class="fa fa-edit icon text-success"></i>
-                        <a class="text-success" href="editprof.html"
-                            >Edit profile</a
-                        >
-                    </li>
-
-                    {% endif %}
 
                     <li id="myScrollspy">
                         <i class="fa fa-flag icon text-success"></i>
                         <a class="text-success" href="#solve">{{ profile.solve_count }}</a>
                     </li>
+                    
+                    {% if request.user.is_authenticated and profile.user.id == request.user.id %}
+                    <li>
+                        
+                        <a class="btn btn-outline-success" href="{% url 'user:editprofile' %}"
+                            > Edit profile</a
+                        >
+                    </li>
+
+                    {% endif %}
 
                     <li>
                     <a href="{% url 'public:eligiblilty' profile.user.id %}" class="btn btn-outline-primary">Check Eligibility</a>
