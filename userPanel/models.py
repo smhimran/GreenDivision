@@ -5,10 +5,20 @@ from django.contrib.auth.models import User
 
 
 class Problem(models.Model):
+    Category_choices = (
+        ('Input/Output', 'Input/Output'),
+        ('Simple Math', 'Simple Math'),
+        ('Condition', 'Condition'),
+        ('Loop', 'Loop'),
+        ('Geometry', 'Geometry'),
+        ('Array/Simple DS', 'Array/Simple DS'),
+        ('String', 'String'),
+        ('Ad-hoc', 'Ad-hoc'),
+    )
     problem_id = models.IntegerField(unique=True)
     name = models.CharField(max_length=300)
     url = models.URLField(max_length=100, unique=True)
-    category = models.CharField(max_length=100, blank=True, null=True)
+    category = models.CharField(max_length=100, choices=Category_choices, blank=True, null=True)
 
     def __str__(self):
         return self.name
