@@ -74,81 +74,97 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in condition:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in math:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in loop:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in array:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in string:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in adhoc:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in geo:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     return render(request, 'public/profile.html', {'profile': profile, "beginner": beginner, "condition": condition, "geo": geo, 
                                                     "math": math, "loop": loop, 'array': array, "string": string, "adhoc": adhoc,
