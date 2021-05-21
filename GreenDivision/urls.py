@@ -21,5 +21,5 @@ urlpatterns = [
     path("email/", include(mail_urls)),
 ]
 
-if settings.DEBUG:
-    urlpatterns += [path("dev-admin/", admin.site.urls)]
+
+urlpatterns += [path("admin/", admin.site.urls)]
