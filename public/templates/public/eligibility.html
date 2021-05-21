@@ -4,6 +4,11 @@
 <title>Eligibility | {{ profile.name }} | Green Division</title>
 {% endblock %}
 
+{% block meta %}
+<meta name="description" content="{{ profile.name }} | Eligibility | GreenDivision">
+<meta property="og:image" content="{{ profile.image }}">
+{% endblock %}
+
  {% block body %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
