@@ -36,21 +36,26 @@ def editprofile(request):
         else:
             show_contact = False
 
+        print(varsity_id)
+
         if image:
             uploaded = uploader.upload(image)
             link = uploaded["url"]
             profile.image = link
 
-        profile.name = name
         user.email = email
+        user.username = varsity_id
+        
+        user.save()
+
+        profile.name = name
         profile.department = department
-        # profile.varsity_id = varsity_id
+        profile.varsity_id = varsity_id
         profile.uri_link = uri_link
         profile.contact = contact
         profile.show_email = show_email
         profile.show_number = show_contact
 
-        user.save()
         profile.save()
 
         return redirect("public:profile", id=user.id)
