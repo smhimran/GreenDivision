@@ -35,10 +35,7 @@ class Profile(models.Model):
     Status_choices = (
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
-        ('Eligible', 'Eligible'),
-        ('Blue', 'Blue'),
-        ('Requested', 'Requested'),
-        ('Request from Blue', 'Request from Blue'),
+        ('Blue', 'Blue')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
