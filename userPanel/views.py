@@ -3,6 +3,10 @@ from .models import Problem, Profile, Submission
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from cloudinary import uploader, api
+from googleapiclient.discovery import build
+from google.oauth2 import service_account
+from datetime import datetime
+import pytz
 
 @login_required
 def editprofile(request):
@@ -59,3 +63,34 @@ def editprofile(request):
         profile.save()
 
         return redirect("public:profile", id=user.id)
+
+@login_required
+def applyforblue(request):
+    if request.method == "GET":
+        user = request.user
+        profile = Profile.objects.get(user=user)
+
+        return render(request, "userPanel/apply_for_blue.html", {"profile": profile})
+    else:
+        SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+        SERVICE_ACCOUNT_FILE = 'keys.json'
+
+        creds = None
+        creds = service_account.Credentials.from_service_account_file(
+                SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+        SAMPLE_SPREADSHEET_ID = '1rVBv0BMY7e_Vs-QcdawwMR8yRnl0TcdH9t8aE94xBu4'
+
+        service = build('sheets', 'v4', credentials=creds)
+
+        #create the row to insert as lists of list
+        current_time = datetime.now(pytz.timezone("Asia/Dhaka")).strftime('%d/%m/%Y %I:%M:%S %p')
+        user_data = [[current_time, "Tanima", 23, "DIU", "CSE"]]
+
+        # Call the Sheets API
+        sheet = service.spreadsheets()
+
+        request = sheet.values().append(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A2", valueInputOption="USER_ENTERED", insertDataOption="INSERT_ROWS", body={"values":user_data})
+        response = request.execute()
+
+        print(response)
