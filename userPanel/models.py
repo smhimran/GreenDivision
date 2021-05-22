@@ -17,6 +17,7 @@ class Problem(models.Model):
     )
     problem_id = models.IntegerField(unique=True)
     name = models.CharField(max_length=300)
+    serial = models.IntegerField(blank=True, null=True)
     url = models.URLField(max_length=100, unique=True)
     category = models.CharField(max_length=100, choices=Category_choices, blank=True, null=True)
 
