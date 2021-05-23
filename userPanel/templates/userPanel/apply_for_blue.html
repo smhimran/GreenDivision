@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-<title>Edit Profile | Grren Division</title>
+<title>Apply for Blue | Grren Division</title>
 {% endblock %}
 
 {% block body %}
@@ -18,17 +18,17 @@
       color: #0a0;
     "
   >
-    Edit Profile
+    Apply for Blue
   </h5>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="mb-3">
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
       <label for="name" class="form-label"
         >Name <span style="color: #e32">*</span></label
       >
-      <input type="text" class="form-control" name="name" id="name" value="{{ profile.name }}" required />
+      <input type="text" class="form-control" name="name" id="name" value="{{ profile.name }}" required disabled />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
       <label for="email" class="form-label"
         >Email address <span style="color: #e32">*</span></label
       >
@@ -39,13 +39,14 @@
         id="email"
         value="{{ profile.user.email }}"
         required
+        disabled
       />
     </div>
-    <div class="mb-3">
+    <div class="mb-3 card rounded-3 shadow-sm p-3">
       <label for="department" class="form-label"
         >Department <span style="color: #e32">*</span></label
       >
-      <select name="department" id="department" class="form-select" value>
+      <select name="department" id="department" class="form-select" value disabled>
         <option disabled>--</option>
         {% if profile.department == 'Computer Science and Engineering' %}
         <option selected value="Computer Science and Engineering">Computer Science and Engineering</option>
@@ -74,9 +75,9 @@
 
       </select>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 card rounded-3 shadow-sm p-3">
       <label for="varsityID" class="form-label"
-        >University ID <span style="color: gray">(To change varsity ID, contact the admins)</span></label
+        >University ID <span style="color: #e32">*</span></label
       >
       <input
         type="text"
@@ -85,9 +86,11 @@
         id="varsity_id"
         value="{{ profile.varsity_id }}"
         required
+        disabled
       />
     </div>
-    <div class="mb-3">
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
       <label for="uriProfile" class="form-label"
         >URI Profile Link
         <span style="font-size: small"
@@ -103,44 +106,110 @@
         id="uriProfile"
         value="{{ profile.uri_link }}"
         required
+        disabled
       />
     </div>
 
-    <div class="mb-3">
-      <label for="contact" class="form-label">Contact Number</label>
-      <input type="text" class="form-control" name="contact" id="contact" value="{{ profile.contact }}" />
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="contact" class="form-label">Contact Number <span style="color: #e32">*</span></label>
+      <input type="text" class="form-control" name="contact" id="contact" value="{{ profile.contact }}" required />
     </div>
 
 
-    <div class="mb-3">
-      <label for="image" class="form-label">Image</label>
-      <input type="file" name="image" id="image" class="form-control" />
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="campus" class="form-label">Campus <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="cc" value="City Campus" required>
+        <label class="form-check-label" for="cc">
+          City Campus (Dhanmondi)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="ac" value="Ashulia Campus" required>
+        <label class="form-check-label" for="ac">
+          Ashulia Campus 
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="uc" value="Uttara Campus" required>
+        <label class="form-check-label" for="uc">
+          Uttara Campus
+        </label>
+      </div>
     </div>
 
-    <div class="form-check form-switch mb-3">
-    {% if profile.show_email %}
-        <input class="form-check-input" type="checkbox" id="showemail"  name="showemail" checked>
-
-    {% else %}
-        <input class="form-check-input" type="checkbox" id="showemail"  name="showemail">
-
-    {% endif %}
-        <label class="form-check-label" for="showemail">Show Email</label>
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="takeoff" class="form-label">Did you participate any Take-off programming contest? <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="takeoff" id="yes" value="Yes" required>
+        <label class="form-check-label" for="yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="takeoff" id="no" value="No" required>
+        <label class="form-check-label" for="no">
+          No
+        </label>
+      </div>
     </div>
-
-    <div class="form-check form-switch mb-3">
-    {% if profile.show_number %}
-        <input class="form-check-input" type="checkbox" id="showcontact"  name="showcontact" checked>
     
-    {% else %}
-        <input class="form-check-input" type="checkbox" id="showcontact"  name="showcontact">
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="contest">Which take-off did you participate? (If participated any)</label>
+      <input type="text" name="contest" id="contest" class="form-control">
+    </div>
     
-    {% endif %}
-        <label class="form-check-label" for="showcontact">Show Contact Number</label>
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="rank">Your rank on take-off programming contest (If participated any)</label>
+      <input type="text" name="rank" id="rank" class="form-control">
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="coding-hour" class="form-label">Your average coding hour per day <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="below3" value="Below 3 hours" required>
+        <label class="form-check-label" for="below3">
+          Below 3 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="3to4" value="3 - 4 hours"  required>
+        <label class="form-check-label" for="3to4">
+          3 - 4 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="4to5" value="4 -5 hours" required>
+        <label class="form-check-label" for="4to5">
+          4 - 5 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="5to6" value="5 - 6 hours" required>
+        <label class="form-check-label" for="5to6">
+          5 - 6 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="above6" value="More than 6 hours" required>
+        <label class="form-check-label" for="above6">
+          More than 6 hours
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="why">Why do you want to join Blue Division? <span style="color: #e32">*</span></label>
+      <input type="text" name="why" id="why" class="form-control" required>
+    </div>
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="view">What is your view of being a CSE student? <span style="color: #e32">*</span></label>
+      <input type="text" name="view" id="view" class="form-control" required>
     </div>
 
     {% if msg %}
-    <div class="mb-3">
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
       <div
         class="
           alert alert-danger

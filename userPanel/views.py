@@ -7,6 +7,7 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from datetime import datetime
 import pytz
+from GreenDivision import settings
 
 @login_required
 def editprofile(request):
@@ -72,8 +73,11 @@ def applyforblue(request):
 
         return render(request, "userPanel/apply_for_blue.html", {"profile": profile})
     else:
+        user = request.user
+        profile = Profile.objects.get(user=user)
+
         SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-        SERVICE_ACCOUNT_FILE = 'keys.json'
+        SERVICE_ACCOUNT_FILE = settings.BASE_DIR / 'keys.json'
 
         creds = None
         creds = service_account.Credentials.from_service_account_file(
@@ -85,7 +89,22 @@ def applyforblue(request):
 
         #create the row to insert as lists of list
         current_time = datetime.now(pytz.timezone("Asia/Dhaka")).strftime('%d/%m/%Y %I:%M:%S %p')
-        user_data = [[current_time, "Tanima", 23, "DIU", "CSE"]]
+
+        name = profile.name
+        email = user.email
+        department = profile.department
+        varsity_id = profile.varsity_id
+        uri_link = profile.uri_link
+        contact = request.POST.get("contact")
+        campus = request.POST.get("campus")
+        takeoff = request.POST.get("takeoff")
+        contest = request.POST.get("contest")
+        rank = request.POST.get("rank")
+        coding_hour = request.POST.get("coding-hour")
+        why = request.POST.get("why")
+        view = request.POST.get("view")
+
+        user_data = [[ name, email, department, varsity_id, uri_link, contact, campus, takeoff, contest, rank, coding_hour, why, view, current_time ]]
 
         # Call the Sheets API
         sheet = service.spreadsheets()
@@ -94,3 +113,5 @@ def applyforblue(request):
         response = request.execute()
 
         print(response)
+
+        return redirect("public:profile", id=user.id)
