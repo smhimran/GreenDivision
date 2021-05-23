@@ -40,6 +40,9 @@
             >Profile</a
           >
         </li>
+
+        {% if profile.user.id == request.user.id%}
+
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -47,6 +50,19 @@
             >Eligibility</a
           >
         </li>
+
+        {% else %}
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'public:eligiblilty' request.user.id %}"
+            >Eligibility</a
+          >
+        </li>
+
+        {% endif %}
+
         {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'public:about' %}">About</a>
@@ -274,7 +290,7 @@
       <section>
         {% if request.user.is_authenticated and request.user.id == profile.user.id %}
         <h4 class="txt text-center pt-3" id="txt">
-          Please solve more to apply for Blue sheet...
+          Please solve more to apply for Blue Division...
         </h4>
         <div class="text-center pt-3">
         <a
@@ -287,7 +303,7 @@
 
         </div>
         {% else %}
-        <h4 class="txt" id="txt">This user isn't eligible for Blue sheet</h4>
+        <h4 class="txt text-center pt-3" id="txt">This user isn't eligible for Blue Division</h4>
         {% endif %}
       </section>
     </div>
