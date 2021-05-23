@@ -235,7 +235,6 @@ def eligibility(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-         if time.exists():
             math_solved += 1
 
     for problem in loop:

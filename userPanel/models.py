@@ -35,6 +35,7 @@ class Profile(models.Model):
     Status_choices = (
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
+        ('Eligible', 'Eligible'),
         ('Blue', 'Blue')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)

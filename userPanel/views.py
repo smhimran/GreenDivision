@@ -71,10 +71,16 @@ def applyforblue(request):
         user = request.user
         profile = Profile.objects.get(user=user)
 
+        if profile.status != 'Eligible':
+            return redirect("public:eligiblilty", id=user.id)
+        
         return render(request, "userPanel/apply_for_blue.html", {"profile": profile})
     else:
         user = request.user
         profile = Profile.objects.get(user=user)
+
+        if profile.status != 'Eligible':
+            return redirect("public:eligiblilty", id=user.id)
 
         SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
         SERVICE_ACCOUNT_FILE = settings.BASE_DIR / 'keys.json'
@@ -104,7 +110,7 @@ def applyforblue(request):
         why = request.POST.get("why")
         view = request.POST.get("view")
 
-        user_data = [[ name, email, department, varsity_id, uri_link, contact, campus, takeoff, contest, rank, coding_hour, why, view, current_time ]]
+        user_data = [[  current_time, name, email, department, varsity_id, uri_link, contact, campus, takeoff, contest, rank, coding_hour, why, view ]]
 
         # Call the Sheets API
         sheet = service.spreadsheets()
