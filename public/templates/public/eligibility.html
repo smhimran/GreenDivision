@@ -179,7 +179,7 @@
     <div class="card mb-5 cat5">
       <div class="card-body">
         <h5 class="card-title" style="text-align: center; color: #dc3545">
-          GEO
+          Geometry
         </h5>
         <div class="card-body">
           <h6> Total Problems: <span class="text-primary"> {{ geo_count }}</span></h6>
@@ -270,19 +270,22 @@
       </div>
     </div>
 
-    <div class="blue" style="padding-bottom: 40px">
+    <div class="blue" style="padding-bottom: 30px;">
       <section>
         {% if request.user.is_authenticated and request.user.id == profile.user.id %}
-        <h4 class="txt" id="txt">
+        <h4 class="txt text-center pt-3" id="txt">
           Please solve more to apply for Blue sheet...
         </h4>
+        <div class="text-center pt-3">
         <a
           href="{% url 'user:applyforblue' %}"
-          class="btn btn-primary btn-md disabled pull-right blbtn"
+          class="btn btn-primary btn-lg btn-md disabled blbtn"
           role="button"
           id="blbtn"
           >Apply for Blue</a
         >
+
+        </div>
         {% else %}
         <h4 class="txt" id="txt">This user isn't eligible for Blue sheet</h4>
         {% endif %}
