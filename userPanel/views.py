@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Problem, Profile, Submission
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+# from django.contrib.sites.models import Site
 from cloudinary import uploader, api
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
@@ -101,6 +103,14 @@ def applyforblue(request):
         department = profile.department
         varsity_id = profile.varsity_id
         uri_link = profile.uri_link
+
+        green_profile = reverse('public:profile', args=(request.user.id,))
+        domain = request.META['HTTP_HOST']
+        green_profile = "http://" + domain + green_profile
+
+        solve_count = profile.solve_count
+
+        semester = request.POST.get("semester")
         contact = request.POST.get("contact")
         campus = request.POST.get("campus")
         takeoff = request.POST.get("takeoff")
@@ -109,8 +119,9 @@ def applyforblue(request):
         coding_hour = request.POST.get("coding-hour")
         why = request.POST.get("why")
         view = request.POST.get("view")
+        view_cp = request.POST.get("cp-view")
 
-        user_data = [[  current_time, name, email, department, varsity_id, uri_link, contact, campus, takeoff, contest, rank, coding_hour, why, view ]]
+        user_data = [[  current_time, name, email, department, varsity_id, uri_link, green_profile, solve_count, semester, contact, campus, takeoff, contest, rank, coding_hour, why, view, view_cp ]]
 
         # Call the Sheets API
         sheet = service.spreadsheets()
