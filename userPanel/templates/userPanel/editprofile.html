@@ -1,12 +1,16 @@
-{% extends 'accounts/base.html' %} {% load static %} {% block title %}
-<title>Register | Grren Division</title>
-{% endblock %} {% block body%}
+{% extends 'accounts/base.html' %}
 
-{% block meta %}
-<meta name="description" content="Register into GreenDivision">
+{% load static %}
+
+{% block title %}
+<title>Edit Profile | Grren Division</title>
 {% endblock %}
 
-<div class="main">
+{% block body %}
+
+
+
+    <div class="main">
   <h5
     style="
       border-bottom: 1px solid lightgrey;
@@ -14,7 +18,7 @@
       color: #0a0;
     "
   >
-    Register into Green Division
+    Edit Profile
   </h5>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -22,7 +26,7 @@
       <label for="name" class="form-label"
         >Name <span style="color: #e32">*</span></label
       >
-      <input type="text" class="form-control" name="name" id="name" required />
+      <input type="text" class="form-control" name="name" id="name" value="{{ profile.name }}" required />
     </div>
     <div class="mb-3">
       <label for="email" class="form-label"
@@ -33,6 +37,7 @@
         class="form-control"
         name="email"
         id="email"
+        value="{{ profile.user.email }}"
         required
       />
     </div>
@@ -40,11 +45,32 @@
       <label for="department" class="form-label"
         >Department <span style="color: #e32">*</span></label
       >
-      <select name="department" id="department" class="form-select">
-        <option selected disabled>--</option>
+      <select name="department" id="department" class="form-select" value>
+        <option disabled>--</option>
+        {% if profile.department == 'Computer Science and Engineering' %}
+        <option selected value="Computer Science and Engineering">Computer Science and Engineering</option>
+        
+        {% else %}
+        
         <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+        {% endif %}
+
+        {% if profile.department == 'Softwear Engineering' %}
+        <option selected value="Softwear Engineering">Softwear Engineering</option>
+        
+        {% else %}
+        
         <option value="Softwear Engineering">Softwear Engineering</option>
+        {% endif %}
+
+
+        {% if profile.department == 'Other' %}
+        <option selected value="Other">Other</option>
+        
+        {% else %}
+        
         <option value="Other">Other</option>
+        {% endif %}
 
       </select>
     </div>
@@ -55,8 +81,9 @@
       <input
         type="text"
         class="form-control"
-        name="id"
-        id="varsityID"
+        name="varsity_id"
+        id="varsity_id"
+        value="{{ profile.varsity_id }}"
         required
       />
     </div>
@@ -70,47 +97,46 @@
         <span style="color: #e32">*</span></label
       >
       <input
-        type="text"
+        type="url"
         class="form-control"
-        name="url"
+        name="uri_link"
         id="uriProfile"
+        value="{{ profile.uri_link }}"
         required
       />
     </div>
 
     <div class="mb-3">
       <label for="contact" class="form-label">Contact Number</label>
-      <input type="text" class="form-control" name="contact" id="contact" />
+      <input type="text" class="form-control" name="contact" id="contact" value="{{ profile.contact }}" />
     </div>
 
-    <div class="mb-3">
-      <label for="password" class="form-label"
-        >Password <span style="color: #e32">*</span></label
-      >
-      <input
-        type="password"
-        class="form-control"
-        name="password"
-        id="password"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label for="conPassword" class="form-label"
-        >Confirm Password <span style="color: #e32">*</span></label
-      >
-      <input
-        type="password"
-        class="form-control"
-        name="conPassword"
-        id="conPassword"
-        required
-      />
-    </div>
 
     <div class="mb-3">
       <label for="image" class="form-label">Image</label>
       <input type="file" name="image" id="image" class="form-control" />
+    </div>
+
+    <div class="form-check form-switch mb-3">
+    {% if profile.show_email %}
+        <input class="form-check-input" type="checkbox" id="showemail"  name="showemail" checked>
+
+    {% else %}
+        <input class="form-check-input" type="checkbox" id="showemail"  name="showemail">
+
+    {% endif %}
+        <label class="form-check-label" for="showemail">Show Email</label>
+    </div>
+
+    <div class="form-check form-switch mb-3">
+    {% if profile.show_number %}
+        <input class="form-check-input" type="checkbox" id="showcontact"  name="showcontact" checked>
+    
+    {% else %}
+        <input class="form-check-input" type="checkbox" id="showcontact"  name="showcontact">
+    
+    {% endif %}
+        <label class="form-check-label" for="showcontact">Show Contact Number</label>
     </div>
 
     {% if msg %}

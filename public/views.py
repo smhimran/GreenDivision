@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from userPanel.models import Problem, Profile, Submission
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import math as Math
 
 
 def standings(request):
@@ -74,81 +75,97 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in condition:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in math:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in loop:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in array:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in string:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in adhoc:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     for problem in geo:
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = time[0].dateTime.strftime('%Y-%m-%d %H:%M')
+            problem.time = time[0].dateTime.strftime('%B %d, %Y at %H:%M %p')
             problem.solved = True
+            problem.language = time[0].language
         else:
             problem.time = '-'
             problem.solved = False
+            problem.language = '-'
 
     return render(request, 'public/profile.html', {'profile': profile, "beginner": beginner, "condition": condition, "geo": geo, 
                                                     "math": math, "loop": loop, 'array': array, "string": string, "adhoc": adhoc,
@@ -219,7 +236,6 @@ def eligibility(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-         if time.exists():
             math_solved += 1
 
     for problem in loop:
@@ -252,14 +268,14 @@ def eligibility(request, id):
         if time.exists():
             geo_solved += 1
 
-    beginner_percentage = (beginner_solved / beginner_count) * 100
-    math_percentage = (math_solved / math_count) * 100
-    condition_percentage = (condition_solved / condition_count) * 100
-    loop_percentage = (loop_solved / loop_count) * 100
-    geo_percentage = (geo_solved / geo_count) * 100
-    array_percentage = (array_solved / array_count) * 100
-    string_percentage = (string_solved / string_count) * 100
-    adhoc_percentage = (adhoc_solved / adhoc_count) * 100
+    beginner_percentage = Math.floor((beginner_solved / beginner_count) * 100)
+    math_percentage = Math.floor((math_solved / math_count) * 100)
+    condition_percentage = Math.floor((condition_solved / condition_count) * 100)
+    loop_percentage = Math.floor((loop_solved / loop_count) * 100)
+    geo_percentage = Math.floor((geo_solved / geo_count) * 100)
+    array_percentage = Math.floor((array_solved / array_count) * 100)
+    string_percentage = Math.floor((string_solved / string_count) * 100)
+    adhoc_percentage = Math.floor((adhoc_solved / adhoc_count) * 100)
 
     return render(request, 'public/eligibility.html', {'profile': profile, 
                                                     "beginner_count": beginner_count, "condition_count": condition_count, 

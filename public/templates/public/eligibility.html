@@ -1,4 +1,15 @@
-{% extends 'public/base.html'%} {% load static%} {% block body %}
+{% extends 'public/base.html'%} {% load static%}
+
+{% block title %}
+<title>Eligibility | {{ profile.name }} | Green Division</title>
+{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ profile.name }} | Eligibility | GreenDivision">
+<meta property="og:image" content="{{ profile.image }}">
+{% endblock %}
+
+ {% block body %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
   <div class="container-fluid">
@@ -29,6 +40,9 @@
             >Profile</a
           >
         </li>
+
+        {% if profile.user.id == request.user.id%}
+
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -36,6 +50,19 @@
             >Eligibility</a
           >
         </li>
+
+        {% else %}
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'public:eligiblilty' request.user.id %}"
+            >Eligibility</a
+          >
+        </li>
+
+        {% endif %}
+
         {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'public:about' %}">About</a>
@@ -259,22 +286,24 @@
       </div>
     </div>
 
-    <div class="blue" style="padding-bottom: 40px">
+    <div class="blue" style="padding-bottom: 30px;">
       <section>
         {% if request.user.is_authenticated and request.user.id == profile.user.id %}
-        <h4 class="txt" id="txt">
-          Please solve more to apply for Blue sheet...
+        <h4 class="txt text-center pt-3" id="txt">
+          Please solve more to apply for Blue Division...
         </h4>
+        <div class="text-center pt-3">
         <a
-          target="_blank"
-          href="https://forms.gle/tgpeQP7w5txTbcrw7"
-          class="btn btn-primary btn-md disabled pull-right blbtn"
+          href="{% url 'user:applyforblue' %}"
+          class="btn btn-primary btn-lg btn-md disabled blbtn"
           role="button"
           id="blbtn"
           >Apply for Blue</a
         >
+
+        </div>
         {% else %}
-        <h4 class="txt" id="txt">This user isn't eligible for Blue sheet</h4>
+        <h4 class="txt text-center pt-3" id="txt">This user isn't eligible for Blue Division</h4>
         {% endif %}
       </section>
     </div>

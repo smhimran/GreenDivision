@@ -5,10 +5,21 @@ from django.contrib.auth.models import User
 
 
 class Problem(models.Model):
+    Category_choices = (
+        ('Input/Output', 'Input/Output'),
+        ('Simple Math', 'Simple Math'),
+        ('Condition', 'Condition'),
+        ('Loop', 'Loop'),
+        ('Geometry', 'Geometry'),
+        ('Array/Simple DS', 'Array/Simple DS'),
+        ('String', 'String'),
+        ('Ad-hoc', 'Ad-hoc'),
+    )
     problem_id = models.IntegerField(unique=True)
     name = models.CharField(max_length=300)
+    serial = models.IntegerField(blank=True, null=True)
     url = models.URLField(max_length=100, unique=True)
-    category = models.CharField(max_length=100, blank=True, null=True)
+    category = models.CharField(max_length=100, choices=Category_choices, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -16,8 +27,8 @@ class Problem(models.Model):
 
 class Profile(models.Model):
     Department_choices = (
-        ('CSE', 'Computer Science and Engineering'),
-        ('SWE', 'Softwear Engineering'),
+        ('Computer Science and Engineering', 'Computer Science and Engineering'),
+        ('Softwear Engineering', 'Softwear Engineering'),
         ('Other', 'Other'),
     )
 
@@ -25,9 +36,7 @@ class Profile(models.Model):
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
         ('Eligible', 'Eligible'),
-        ('Blue', 'Blue'),
-        ('Requested', 'Requested'),
-        ('Request from Blue', 'Request from Blue'),
+        ('Blue', 'Blue')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)

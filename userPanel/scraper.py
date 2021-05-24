@@ -203,6 +203,131 @@ def scrape_data():
 
         user.save()
 
+        submissions = Submission.objects.filter(user=user).order_by('problem')
+        # problems = Problem.objects.all()
+
+        beginner = list(Problem.objects.filter(category="Input/Output"))
+        beginner_count = len(beginner)
+
+        condition = list(Problem.objects.filter(category="Condition"))
+        condition_count = len(condition)
+
+        geo = list(Problem.objects.filter(category="Geometry"))
+        geo_count = len(geo)
+
+        math = list(Problem.objects.filter(category="Simple Math"))
+        math_count = len(math)
+
+        loop = list(Problem.objects.filter(category="Loop"))
+        loop_count = len(loop)
+
+        array = list(Problem.objects.filter(category="Array/Simple DS"))
+        array_count = len(array)
+
+        string = list(Problem.objects.filter(category="String"))
+        string_count = len(string)
+
+        adhoc = list(Problem.objects.filter(category="Ad-hoc"))
+        adhoc_count = len(adhoc)
+
+        beginner_solved = 0
+        condition_solved = 0
+        math_solved = 0
+        loop_solved = 0
+        geo_solved = 0
+        array_solved = 0
+        string_solved = 0
+        adhoc_solved = 0
+
+        for problem in beginner:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                beginner_solved += 1
+
+        for problem in condition:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                condition_solved += 1
+
+        for problem in math:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                math_solved += 1
+
+        for problem in loop:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                loop_solved += 1
+
+        for problem in array:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                array_solved += 1
+
+        for problem in string:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                string_solved += 1
+
+        for problem in adhoc:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                adhoc_solved += 1
+
+        for problem in geo:
+            solve_time = submissions.filter(problem=problem)
+
+            if solve_time.exists():
+                geo_solved += 1
+
+        beginner_percentage = (beginner_solved / beginner_count) * 100
+        math_percentage = (math_solved / math_count) * 100
+        condition_percentage = (condition_solved / condition_count) * 100
+        loop_percentage = (loop_solved / loop_count) * 100
+        geo_percentage = (geo_solved / geo_count) * 100
+        array_percentage = (array_solved / array_count) * 100
+        string_percentage = (string_solved / string_count) * 100
+        adhoc_percentage = (adhoc_solved / adhoc_count) * 100
+
+        eligible = True
+
+        if beginner_percentage < 60:
+            eligible = False
+
+        if math_percentage < 60:
+            eligible = False
+
+        if condition_percentage < 60:
+            eligible = False
+
+        if loop_percentage < 60:
+            eligible = False
+
+        if geo_percentage < 60:
+            eligible = False
+
+        if array_percentage < 60:
+            eligible = False
+
+        if string_percentage < 60:
+            eligible = False
+
+        if adhoc_percentage < 60:
+            eligible = False
+
+        if eligible == True:
+            user.status = "Eligible"
+
+        user.save()
+
+
     fp = open("scrapper_log.txt", 'a')
     fp.write("\n\n>>Scraper Runtime: %s seconds\n" %
              (time.time() - start_time))

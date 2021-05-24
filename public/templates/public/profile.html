@@ -1,6 +1,15 @@
 {% extends 'public/base.html'%}
 {% load static %}
 
+{% block title %}
+<title>{{ profile.name }} | Green Division</title>
+{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ profile.name }} | GreenDivision Profile">
+<meta property="og:image" content="{{ profile.image }}">
+{% endblock %}
+
 {% block body %}
             <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
                 <div class="container-fluid">
@@ -118,27 +127,30 @@
                         {% elif profile.status == 'Blue' %}
                             <span class="text-primary">Blue Member</span>
 
+                        {% elif profile.status == 'Eligible' %}
+                            <span style="color: #0bb">Eligible for Blue</span>
+
                         {% else %}
                             <span class="text-secondary">Inactive</span>
 
                         {% endif %}
                         </strong>
                     </li>
-                    
-                    {% if request.user.is_authenticated and profile.user.id == request.user.id %}
-                    <li>
-                        <i class="fa fa-edit icon text-success"></i>
-                        <a class="text-success" href="editprof.html"
-                            >Edit profile</a
-                        >
-                    </li>
-
-                    {% endif %}
 
                     <li id="myScrollspy">
                         <i class="fa fa-flag icon text-success"></i>
                         <a class="text-success" href="#solve">{{ profile.solve_count }}</a>
                     </li>
+                    
+                    {% if request.user.is_authenticated and profile.user.id == request.user.id %}
+                    <li>
+                        
+                        <a class="btn btn-outline-success" href="{% url 'user:editprofile' %}"
+                            > Edit profile</a
+                        >
+                    </li>
+
+                    {% endif %}
 
                     <li>
                     <a href="{% url 'public:eligiblilty' profile.user.id %}" class="btn btn-outline-primary">Check Eligibility</a>
@@ -163,6 +175,7 @@
                             <th scope="col" class="text-center">Problem Name</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Time</th>
+                            <th scope="col" class="text-center">Language</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,6 +205,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -222,6 +236,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -252,6 +267,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -282,6 +298,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -312,6 +329,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -342,6 +360,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -372,6 +391,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}
@@ -402,6 +422,7 @@
 
                             </td>
                             <td class="text-center">{{ problem.time }}</td>
+                            <td class="text-center" style="color: #0a0;">{{ problem.language }}</td>
                         </tr>
 
                     {% endfor %}

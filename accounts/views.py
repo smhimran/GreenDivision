@@ -63,7 +63,6 @@ def sign_up(request):
             user.save()
 
             if image:
-                print(image)
                 uploaded = uploader.upload(image)
                 link = uploaded["url"]
 

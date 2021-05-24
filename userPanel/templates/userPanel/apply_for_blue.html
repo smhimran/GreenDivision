@@ -1,0 +1,281 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Apply for Blue | Grren Division</title>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="main">
+  <h5
+    style="
+      border-bottom: 1px solid lightgrey;
+      padding-bottom: 15px;
+      color: #0a0;
+    "
+  >
+    Apply for Blue
+  </h5>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="name" class="form-label"
+        >Name <span style="color: #e32">*</span></label
+      >
+      <input type="text" class="form-control" name="name" id="name" value="{{ profile.name }}" required disabled />
+    </div>
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="email" class="form-label"
+        >Email address <span style="color: #e32">*</span></label
+      >
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        value="{{ profile.user.email }}"
+        required
+        disabled
+      />
+    </div>
+    <div class="mb-3 card rounded-3 shadow-sm p-3">
+      <label for="department" class="form-label"
+        >Department <span style="color: #e32">*</span></label
+      >
+      <select name="department" id="department" class="form-select" value disabled>
+        <option disabled>--</option>
+        {% if profile.department == 'Computer Science and Engineering' %}
+        <option selected value="Computer Science and Engineering">Computer Science and Engineering</option>
+        
+        {% else %}
+        
+        <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+        {% endif %}
+
+        {% if profile.department == 'Softwear Engineering' %}
+        <option selected value="Softwear Engineering">Softwear Engineering</option>
+        
+        {% else %}
+        
+        <option value="Softwear Engineering">Softwear Engineering</option>
+        {% endif %}
+
+
+        {% if profile.department == 'Other' %}
+        <option selected value="Other">Other</option>
+        
+        {% else %}
+        
+        <option value="Other">Other</option>
+        {% endif %}
+
+      </select>
+    </div>
+    <div class="mb-3 card rounded-3 shadow-sm p-3">
+      <label for="varsityID" class="form-label"
+        >University ID <span style="color: #e32">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        name="varsity_id"
+        id="varsity_id"
+        value="{{ profile.varsity_id }}"
+        required
+        disabled
+      />
+    </div>
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="uriProfile" class="form-label"
+        >URI Profile Link
+        <span style="font-size: small"
+          >(e.g.:
+          https://www.urionlinejudge.com.br/judge/en/profile/000001)</span
+        >
+        <span style="color: #e32">*</span></label
+      >
+      <input
+        type="url"
+        class="form-control"
+        name="uri_link"
+        id="uriProfile"
+        value="{{ profile.uri_link }}"
+        required
+        disabled
+      />
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3">
+      <label for="semester" class="form-label"
+        >Which semester are you in <span style="color: #e32">*</span></label
+      >
+      <select name="semester" id="semester" class="form-select" value required>
+        <option selected disabled>--</option>
+        
+        <option value="1st">1st</option>
+        <option value="2nd">2nd</option>
+        <option value="3rd">3rd</option>
+        <option value="4th">4th</option>
+        <option value="5th">5th</option>
+        <option value="6th">6th</option>
+        <option value="7th">7th</option>
+        <option value="8th">8th</option>
+        <option value="9th">9th</option>
+        <option value="10th">10th</option>
+        <option value="11th">11th</option>
+        <option value="12th">12th</option>
+
+      </select>
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="contact" class="form-label">Contact Number <span style="color: #e32">*</span></label>
+      <input type="text" class="form-control" name="contact" id="contact" value="{{ profile.contact }}" required />
+    </div>
+
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="campus" class="form-label">Campus <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="cc" value="City Campus" required>
+        <label class="form-check-label" for="cc">
+          City Campus (Dhanmondi)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="ac" value="Ashulia Campus" required>
+        <label class="form-check-label" for="ac">
+          Ashulia Campus 
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="campus" id="uc" value="Uttara Campus" required>
+        <label class="form-check-label" for="uc">
+          Uttara Campus
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="takeoff" class="form-label">Did you participate any Take-off programming contest? <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="takeoff" id="yes" value="Yes" required>
+        <label class="form-check-label" for="yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="takeoff" id="no" value="No" required>
+        <label class="form-check-label" for="no">
+          No
+        </label>
+      </div>
+    </div>
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="contest">Which take-off did you participate? (If participated any)</label>
+      <input type="text" name="contest" id="contest" class="form-control">
+    </div>
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="rank">Your rank on take-off programming contest (If participated any)</label>
+      <input type="text" name="rank" id="rank" class="form-control">
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label for="coding-hour" class="form-label">Your average coding hour per day <span style="color: #e32">*</span></label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="below3" value="Below 3 hours" required>
+        <label class="form-check-label" for="below3">
+          Below 3 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="3to4" value="3 - 4 hours"  required>
+        <label class="form-check-label" for="3to4">
+          3 - 4 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="4to5" value="4 -5 hours" required>
+        <label class="form-check-label" for="4to5">
+          4 - 5 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="5to6" value="5 - 6 hours" required>
+        <label class="form-check-label" for="5to6">
+          5 - 6 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="coding-hour" id="above6" value="More than 6 hours" required>
+        <label class="form-check-label" for="above6">
+          More than 6 hours
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="why">Why do you want to join Blue Division? <span style="color: #e32">*</span></label>
+      <input type="text" name="why" id="why" class="form-control" required>
+    </div>
+    
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="view">What is your view of being a CSE student? <span style="color: #e32">*</span></label>
+      <input type="text" name="view" id="view" class="form-control" required>
+    </div>
+
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <label class="form-label" for="cp-view">What is your view about Competitive Progamming? <span style="color: #e32">*</span></label>
+      <input type="text" name="cp-view" id="cp-view" class="form-control" required>
+    </div>
+
+    {% if msg %}
+    <div class="mb-3 card rounded-3 shadow-sm p-3 ">
+      <div
+        class="
+          alert alert-danger
+          d-flex
+          align-items-center
+          alert-dismissible
+          fade
+          show
+        "
+        role="alert"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+          viewBox="0 0 16 16"
+          role="img"
+          aria-label="Warning:"
+        >
+          <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+          />
+        </svg>
+        <div>{{ msg }}</div>
+        <button
+          type="button"
+          class="btn-close float-right"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
