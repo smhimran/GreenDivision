@@ -46,28 +46,28 @@ def user_profile(request, id):
     submissions = Submission.objects.filter(user=profile).order_by('problem')
     # problems = Problem.objects.all()
 
-    beginner = list(Problem.objects.filter(category="Input/Output"))
+    beginner = list(Problem.objects.filter(category="Input/Output").order_by('serial'))
     beginner_count = len(beginner)
 
-    condition = list(Problem.objects.filter(category="Condition"))
+    condition = list(Problem.objects.filter(category="Condition").order_by('serial'))
     condition_count = len(condition)
 
-    geo = list(Problem.objects.filter(category="Geometry"))
+    geo = list(Problem.objects.filter(category="Geometry").order_by('serial'))
     geo_count = len(geo)
 
-    math = list(Problem.objects.filter(category="Simple Math"))
+    math = list(Problem.objects.filter(category="Simple Math").order_by('serial'))
     math_count = len(math)
 
-    loop = list(Problem.objects.filter(category="Loop"))
+    loop = list(Problem.objects.filter(category="Loop").order_by('serial'))
     loop_count = len(loop)
 
-    array = list(Problem.objects.filter(category="Array/Simple DS"))
+    array = list(Problem.objects.filter(category="Array/Simple DS").order_by('serial'))
     array_count = len(array)
 
-    string = list(Problem.objects.filter(category="String"))
+    string = list(Problem.objects.filter(category="String").order_by('serial'))
     string_count = len(string)
 
-    adhoc = list(Problem.objects.filter(category="Ad-hoc"))
+    adhoc = list(Problem.objects.filter(category="Ad-hoc").order_by('serial'))
     adhoc_count = len(adhoc)
 
 
