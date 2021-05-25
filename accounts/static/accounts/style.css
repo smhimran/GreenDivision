@@ -174,4 +174,12 @@ form {
   .sec {
     margin-bottom: 0.7rem;
   }
+
+  .header {
+    margin-bottom: auto;
+  }
+
+  .accounts {
+    margin-top: 0;
+  }
 }
