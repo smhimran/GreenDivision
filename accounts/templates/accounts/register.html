@@ -1,9 +1,9 @@
 {% extends 'accounts/base.html' %} {% load static %} {% block title %}
 <title>Register | Grren Division</title>
-{% endblock %} {% block body%}
+{% endblock %} {% block body%} {% block meta %}
+<meta name="description" content="Register into GreenDivision" />
 
-{% block meta %}
-<meta name="description" content="Register into GreenDivision">
+<meta property="og:image" content="{% static 'public/images/logo.jpg' %}" />
 {% endblock %}
 
 <div class="main">
@@ -42,10 +42,11 @@
       >
       <select name="department" id="department" class="form-select">
         <option selected disabled>--</option>
-        <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+        <option value="Computer Science and Engineering">
+          Computer Science and Engineering
+        </option>
         <option value="Softwear Engineering">Softwear Engineering</option>
         <option value="Other">Other</option>
-
       </select>
     </div>
     <div class="mb-3">

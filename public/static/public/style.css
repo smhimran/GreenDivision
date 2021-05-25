@@ -9,6 +9,7 @@ body {
   font-family: fantasy;
   font-size: xx-large;
 }
+
 .navbar {
   border: 1px solid lightgrey;
   border-radius: 8px;
@@ -51,9 +52,22 @@ img {
   max-width: 200px;
   height: auto;
 }
+
+.logo img {
+  float: none;
+  height: 70px;
+  object-fit: contain;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
 .accounts {
   text-align: right;
+  margin-top: -55px;
 }
+
 .main {
   width: 65%;
   margin: 120px auto;
@@ -87,7 +101,6 @@ form {
   border-bottom: #0a0 2px solid;
   border-radius: 2px;
 }
-
 
 .cat1 {
   box-shadow: 0 0.5rem 0.5rem #cbfdd0;

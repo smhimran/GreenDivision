@@ -339,7 +339,7 @@ def scrape_data():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(scrape_data, 'interval', minutes=1)
+    scheduler.add_job(scrape_data, 'interval', minutes=5)
     scheduler.start()
 
 
