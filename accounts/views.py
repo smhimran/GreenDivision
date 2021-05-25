@@ -79,7 +79,7 @@ def sign_up(request):
 
         except Exception as e:
             print(e)
-            return render(request, "accounts/register.html", {"msg": "A user with the email or id"})
+            return render(request, "accounts/register.html", {"msg": "A user with the email or id already exists"})
 
         return redirect("accounts:login")
 
