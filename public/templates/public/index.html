@@ -70,6 +70,7 @@
                             <th scope="col">Who</th>
                             <th scope="col">URI Profile</th>
                             <th scope="col" class="text-center">Solve count</th>
+                            <th scope="col" class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,6 +80,19 @@
                             <td> <a class="text-decoration-none" href="{% url 'public:profile' profile.user.id %}"> {{ profile.name }} </a> </td>
                             <td> <a target="_blank" class="text-decoration-none" href="{{ profile.uri_link }}"> {{ profile.name }} </a> </td>
                             <td class="cnt text-center">{{ profile.solve_count }}</td>
+                            {% if profile.status == 'Active' %}
+                                <td class="text-success text-center">Active</td>
+
+                            {% elif profile.status == 'Blue' %}
+                                <td class="text-primary text-center">Blue Member</td>
+
+                            {% elif profile.status == 'Eligible' %}
+                                <td style="color: #0bb text-center">Eligible for Blue</td>
+
+                            {% else %}
+                                <td class="text-secondary text-center">Inactive</td>
+
+                            {% endif %}
                         </tr>
 
                         {% endfor %}
