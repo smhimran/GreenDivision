@@ -151,7 +151,7 @@ EMAIL_MAIL_SUBJECT = env.Email_subject
 EMAIL_MAIL_HTML = "userPanel/mail_body.html"
 EMAIL_MAIL_PLAIN = "userPanel/mail_body.txt"
 EMAIL_PAGE_TEMPLATE = "userPanel/confirm_template.html"
-EMAIL_PAGE_DOMAIN = "http://localhost:8000"
+EMAIL_PAGE_DOMAIN = "greendivision.herokuapp.com"
 
 EMAIL_BACKEND = env.EMAIL_BACKEND
 EMAIL_HOST = env.EMAIL_HOST
