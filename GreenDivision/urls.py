@@ -19,7 +19,7 @@ urlpatterns = [
 
     # URL path for sending emails
     path("email/", include(mail_urls)),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 urlpatterns += [path("admin/", admin.site.urls)]
