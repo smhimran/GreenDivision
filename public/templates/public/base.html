@@ -53,7 +53,7 @@
                     >
                 {% else %}
                 <a href="{% url 'public:profile' request.user.id %}" class="text-decoration-none"
-                        > {{ request.user.id }} </a
+                        > {{ request.user.username }} </a
                     >
                     <a href="{% url 'accounts:logout'  %}" class="btn btn-outline-danger"
                         ><span><i class="fa fa-sign-out"></i></span>

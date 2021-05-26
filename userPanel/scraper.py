@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 from urllib.request import urlopen as uReq, Request
+
+import pytz
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 import time
@@ -7,6 +9,7 @@ import datetime
 from .models import Problem, Profile, Submission
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.utils import timezone
+from django.utils.timezone import make_aware
 from django.db.models import Q
 
 
@@ -197,7 +200,7 @@ def scrape_data():
             min_date = min(min_date, submission[2])
             problem = Problem.objects.get(problem_id=submission[0])
             solve = Submission.objects.create(user=user, problem=problem,
-                                              language=submission[1], dateTime=submission[2])
+                                              language=submission[1], dateTime=datetime.datetime(submission[2], tzinfo=pytz.timezone("Asia/Dhaka")))
 
         user.last_submission_time = min_date
 
