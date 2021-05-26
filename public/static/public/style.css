@@ -50,9 +50,9 @@ img {
   float: right;
   width: 100%;
   max-width: 200px;
-  max-height: 400px;
   object-fit: contain;
   height: auto;
+  max-height: 300px;
 }
 
 .logo img {
