@@ -195,7 +195,7 @@ def scrape_data():
 
         user.save()
 
-        min_date = datetime.datetime.now()
+        min_date = datetime.datetime.now(pytz.timezone("Asia/Dhaka"))
 
         for submission in profile[0]:
             # print(submission[0])
