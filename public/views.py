@@ -76,7 +76,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -88,7 +88,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -100,7 +100,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -112,7 +112,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -124,7 +124,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -136,7 +136,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -148,7 +148,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
@@ -160,7 +160,7 @@ def user_profile(request, id):
         time = submissions.filter(problem=problem)
 
         if time.exists():
-            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %H:%M %p')
+            problem.time = timezone.localtime(time[0].dateTime).strftime('%B %d, %Y at %I:%M %p')
             problem.solved = True
             problem.language = time[0].language
         else:
