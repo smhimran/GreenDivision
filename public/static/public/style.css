@@ -50,6 +50,8 @@ img {
   float: right;
   width: 100%;
   max-width: 200px;
+  max-width: 400px;
+  object-fit: contain;
   height: auto;
 }
 
