@@ -27,7 +27,7 @@ def standings(request):
 
     n = (n // 10) + 1
 
-    paginator = Paginator(profiles_list, 10)
+    paginator = Paginator(profiles_list, 20)
 
     page = request.GET.get('page', 1)
 
