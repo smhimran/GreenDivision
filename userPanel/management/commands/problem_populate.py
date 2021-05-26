@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from userPanel.models import Problem, Profile
+from userPanel.scraper import scrape_data
 
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
@@ -55,4 +56,14 @@ class Command(BaseCommand):
             profile.last_submission_time = None
             profile.total_scrapped = 0
 
+            profile.save()
+
         print("\nUpdated Profiles Successfully!\n")
+
+
+        print("\nRunning Scrapper...\n")
+
+        scrape_data()
+
+        print("\nScrapper ran successfully!\n")
+
