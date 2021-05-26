@@ -82,6 +82,8 @@ class uri_scraper(object):
                     sol_time = datetime.datetime.strptime(
                         sol_time, '%m/%d/%y, %I:%M:%S %p')
 
+                    sol_time = pytz.timezone("Asia/Dhaka").localize(sol_time)
+
                     problem_details = [prob_no, sol_lang, sol_time]
                     # print(problem_details)
 
@@ -200,7 +202,7 @@ def scrape_data():
             min_date = min(min_date, submission[2])
             problem = Problem.objects.get(problem_id=submission[0])
             solve = Submission.objects.create(user=user, problem=problem,
-                                              language=submission[1], dateTime=datetime.datetime(submission[2], tzinfo=pytz.timezone("Asia/Dhaka")))
+                                              language=submission[1], dateTime=submission[2])
 
         user.last_submission_time = min_date
 
