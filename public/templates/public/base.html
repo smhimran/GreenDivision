@@ -52,8 +52,8 @@
                         Register</a
                     >
                 {% else %}
-                <a href="{% url 'public:profile' request.user.id %}" class="text-decoration-none"
-                        > {{ request.user.username }}  </a
+                <a href="{% url 'public:profile' request.user.id %}" class="btn btn-outline-success"
+                        ><span><i class="fa fa-user-circle-o"></i></span> {{ request.user.username }}  </a
                     >
                     |
                     <a href="{% url 'accounts:logout'  %}" class="btn btn-outline-danger"

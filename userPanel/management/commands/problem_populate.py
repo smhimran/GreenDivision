@@ -55,6 +55,7 @@ class Command(BaseCommand):
             profile.solve_count = 0
             profile.last_submission_time = None
             profile.total_scrapped = 0
+            profile.status = "Active"
 
             profile.save()
 
