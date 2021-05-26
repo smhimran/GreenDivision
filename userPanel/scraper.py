@@ -82,7 +82,7 @@ class uri_scraper(object):
                     sol_time = datetime.datetime.strptime(
                         sol_time, '%m/%d/%y, %I:%M:%S %p')
 
-                    sol_time = pytz.timezone("Asia/Dhaka").localize(sol_time)
+                    sol_time = pytz.timezone("UTC").localize(sol_time)
 
                     problem_details = [prob_no, sol_lang, sol_time]
                     # print(problem_details)
