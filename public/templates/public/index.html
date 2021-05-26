@@ -229,7 +229,7 @@
                     <ul class="pagination justify-content-center">
                     {% if profiles.has_previous %}
                         <li class="page-item">
-                        <a class="page-link" href="?page={{ profile.previous_page_number }}" tabindex="-1">
+                        <a class="page-link" href="?page={{ profiles.previous_page_number }}" tabindex="-1">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                         </li>
@@ -245,7 +245,7 @@
 
                     {% if profiles.has_next %}
                         <li class="page-item">
-                        <a class="page-link" href="?page={{ profile.next_page_number }}">
+                        <a class="page-link" href="?page={{ profiles.next_page_number }}">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                         </li>
