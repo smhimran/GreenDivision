@@ -43,8 +43,8 @@
                 >
                 <div class="accounts mb-2">
                 {% if request.user.is_authenticated == False %}
-                    <a href="{% url 'public:profile' request.user.id %}" class="text-decoration-none"
-                        >{{ request.user.id }} </a
+                    <a href="{% url 'accounts:login'  %}" class="btn btn-outline-success"
+                        ><span><i class="fa fa-sign-in"></i></span> Login</a
                     >
                     |
                     <a href="{% url 'accounts:register'  %}" class="btn btn-outline-secondary"
@@ -52,8 +52,8 @@
                         Register</a
                     >
                 {% else %}
-                <a href="{% url 'public:login'  %}" class="btn btn-outline-success"
-                        ><span><i class="fa fa-sign-in"></i></span> Login</a
+                <a href="{% url 'public:profile' request.user.id %}" class="text-decoration-none"
+                        > {{ request.user.id }} </a
                     >
                     <a href="{% url 'accounts:logout'  %}" class="btn btn-outline-danger"
                         ><span><i class="fa fa-sign-out"></i></span>
