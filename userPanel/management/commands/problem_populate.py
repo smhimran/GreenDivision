@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from userPanel.models import Problem
+from userPanel.models import Problem, Profile
 
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
@@ -44,4 +44,15 @@ class Command(BaseCommand):
             models.save()
             print("saved " + name)
 
-        print("\nUpdated Successfully\n")
+        print("\nUpdated Problems Successfully!\n")
+
+        print("\nUpdating Profiles....\n")
+
+        profiles = Profile.objects.all()
+
+        for profile in profiles:
+            profile.solve_count = 0
+            profile.last_submission_time = None
+            profile.total_scrapped = 0
+
+        print("\nUpdated Profiles Successfully!\n")
