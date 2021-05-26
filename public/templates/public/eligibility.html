@@ -1,15 +1,12 @@
-{% extends 'public/base.html'%} {% load static%}
-
-{% block title %}
+{% extends 'public/base.html'%} {% load static%} {% block title %}
 <title>Eligibility | {{ profile.name }} | Green Division</title>
-{% endblock %}
-
-{% block meta %}
-<meta name="description" content="{{ profile.name }} | Eligibility | GreenDivision">
-<meta property="og:image" content="{{ profile.image }}">
-{% endblock %}
-
- {% block body %}
+{% endblock %} {% block meta %}
+<meta
+  name="description"
+  content="{{ profile.name }} | Eligibility | GreenDivision"
+/>
+<meta property="og:image" content="{{ profile.image }}" />
+{% endblock %} {% block body %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
   <div class="container-fluid">
@@ -61,9 +58,7 @@
           >
         </li>
 
-        {% endif %}
-
-        {% endif %}
+        {% endif %} {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'public:about' %}">About</a>
         </li>
@@ -72,7 +67,9 @@
   </div>
 </nav>
 <div class="eligibility">
-  <h3 class="my-5" style="color: #0a0; text-align: center">Eligibility</h3>
+  <h3 class="my-5" style="color: #0a0; text-align: center">
+    Eligibility of {{ profile.name }}
+  </h3>
 
   <!-- <nav aria-label="...">
           <ul class="pagination justify-content-center">
@@ -98,12 +95,20 @@
   <div class="container">
     <div class="card mb-5 cat1">
       <div class="card-body">
-        <h5 class="card-title" style="text-align: center; color: rgb(1, 163, 1)">
+        <h5
+          class="card-title"
+          style="text-align: center; color: rgb(1, 163, 1)"
+        >
           Input/Output
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ beginner_count }}</span> </h6>
-          <h6 class="mb-5"> Solved: <span style="color: #0a0"> {{ beginner_solved }} </span> </h6>
+          <h6>
+            Total Problems:
+            <span class="text-primary"> {{ beginner_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ beginner_solved }} </span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps" id="ps">{{ beginner_percentage }}%</span>
           <div class="progress">
@@ -126,8 +131,12 @@
           Simple Math
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ math_count }}</span> </h6>
-          <h6 class="mb-5"> Solved: <span style="color: #0a0"> {{ math_solved }}</span> </h6>
+          <h6>
+            Total Problems: <span class="text-primary"> {{ math_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ math_solved }}</span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ math_percentage }}%</span>
           <div class="progress">
@@ -150,8 +159,13 @@
           Condition
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ condition_count }}</span></h6>
-          <h6 class="mb-5"> Solved: <span style="color: #0a0"> {{ condition_solved }}</span></h6>
+          <h6>
+            Total Problems:
+            <span class="text-primary"> {{ condition_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ condition_solved }}</span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ condition_percentage }}%</span>
           <div class="progress">
@@ -174,8 +188,12 @@
           Loop
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ loop_count }}</span></h6>
-          <h6 class="mb-5"> Solved: <span style="color: #0a0"> {{ loop_solved }}</span></h6>
+          <h6>
+            Total Problems: <span class="text-primary"> {{ loop_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ loop_solved }}</span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ loop_percentage }}%</span>
           <div class="progress">
@@ -198,8 +216,12 @@
           Geometry
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ geo_count }}</span></h6>
-          <h6 class="mb-5"> Solved: <span style="color: #0a0">{{ geo_solved }}</span></h6>
+          <h6>
+            Total Problems: <span class="text-primary"> {{ geo_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0">{{ geo_solved }}</span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ geo_percentage }}%</span>
           <div class="progress">
@@ -222,8 +244,12 @@
           Array/Simple DS
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary"> {{ array_count }}</span></h6>
-          <h6 class="mb-5">  Solved: <span style="color: #0a0"> {{ array_solved }} </span></h6>
+          <h6>
+            Total Problems: <span class="text-primary"> {{ array_count }}</span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ array_solved }} </span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ array_percentage }}%</span>
           <div class="progress">
@@ -241,12 +267,20 @@
     </div>
     <div class="card mb-5 cat7">
       <div class="card-body">
-        <h5 class="card-title" style="text-align: center; color: rgb(252, 49, 3)">
+        <h5
+          class="card-title"
+          style="text-align: center; color: rgb(252, 49, 3)"
+        >
           String
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary">{{ string_count }} </span></h6>
-          <h6 class="mb-5"> Solved:  <span style="color: #0a0"> {{ string_solved }} </span></h6>
+          <h6>
+            Total Problems:
+            <span class="text-primary">{{ string_count }} </span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ string_solved }} </span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ string_percentage }}%</span>
           <div class="progress">
@@ -264,12 +298,19 @@
     </div>
     <div class="card mb-4 cat8">
       <div class="card-body">
-        <h5 class="card-title" style="text-align: center; color: rgb(190, 0, 0)">
+        <h5
+          class="card-title"
+          style="text-align: center; color: rgb(190, 0, 0)"
+        >
           Ad-hoc
         </h5>
         <div class="card-body">
-          <h6> Total Problems: <span class="text-primary">{{ adhoc_count }} </span></h6>
-          <h6 class="mb-5"> Solved:  <span style="color: #0a0"> {{ adhoc_solved }} </span></h6>
+          <h6>
+            Total Problems: <span class="text-primary">{{ adhoc_count }} </span>
+          </h6>
+          <h6 class="mb-5">
+            Solved: <span style="color: #0a0"> {{ adhoc_solved }} </span>
+          </h6>
           <h6>Progress</h6>
           <span class="pull-right ps">{{ adhoc_percentage }}%</span>
           <div class="progress">
@@ -286,24 +327,26 @@
       </div>
     </div>
 
-    <div class="blue" style="padding-bottom: 30px;">
+    <div class="blue" style="padding-bottom: 30px">
       <section>
-        {% if request.user.is_authenticated and request.user.id == profile.user.id %}
+        {% if request.user.is_authenticated and request.user.id ==
+        profile.user.id %}
         <h4 class="txt text-center pt-3" id="txt">
           Please solve more to apply for Blue Division...
         </h4>
         <div class="text-center pt-3">
-        <a
-          href="{% url 'user:applyforblue' %}"
-          class="btn btn-primary btn-lg btn-md disabled blbtn"
-          role="button"
-          id="blbtn"
-          >Apply for Blue</a
-        >
-
+          <a
+            href="{% url 'user:applyforblue' %}"
+            class="btn btn-primary btn-lg btn-md disabled blbtn"
+            role="button"
+            id="blbtn"
+            >Apply for Blue</a
+          >
         </div>
         {% else %}
-        <h4 class="txt text-center pt-3" id="txt">This user isn't eligible for Blue Division</h4>
+        <h4 class="txt text-center pt-3" id="txt">
+          This user isn't eligible for Blue Division
+        </h4>
         {% endif %}
       </section>
     </div>
