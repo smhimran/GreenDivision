@@ -20,6 +20,10 @@ urlpatterns = [
 
     # URL path for sending emails
     path("email/", include(mail_urls)),
+
+    # URL paths for admin templates
+    path('jet/', include('jet.urls', 'jet')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

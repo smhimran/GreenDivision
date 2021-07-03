@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['greendivision.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 cloudinary.config(
     cloud_name=env.CLOUDINARY_CLOUD_NAME,
@@ -41,6 +41,8 @@ cloudinary.config(
 # Application definition
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -94,12 +96,18 @@ WSGI_APPLICATION = "GreenDivision.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -180,3 +188,5 @@ LOGGING = {
         },
     },
 }
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'

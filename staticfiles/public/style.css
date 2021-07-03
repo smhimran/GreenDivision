@@ -1,0 +1,194 @@
+body {
+  background: #fff;
+  margin: 20px 50px;
+}
+
+.logo {
+  color: #0a0;
+  text-decoration: none;
+  font-family: fantasy;
+  font-size: xx-large;
+}
+
+.navbar {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  color: black;
+}
+
+th,
+td {
+  border-right: 1px solid #e1e1e1;
+  font-family: verdana, arial, sans-serif;
+}
+
+.cnt {
+  color: #0a0;
+  font-weight: bold;
+}
+
+.info {
+  margin-top: 50px;
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  height: auto;
+  min-height: 300px !important;
+}
+li {
+  list-style: none;
+  margin-bottom: 10px;
+  color: gray;
+}
+.icon {
+  color: gray;
+  font-weight: bolder;
+  font-size: large;
+  margin-right: 5px;
+}
+img {
+  float: right;
+  width: 100%;
+  max-width: 200px;
+  object-fit: contain;
+  height: auto;
+  max-height: 300px;
+}
+
+.logo img {
+  float: none;
+  height: 70px;
+  object-fit: contain;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.accounts {
+  text-align: right;
+  margin-top: -55px;
+}
+
+.main {
+  width: 65%;
+  margin: 120px auto;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+form {
+  padding-top: 20px;
+}
+
+.card-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5rem;
+}
+
+.card-group2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+.nav-item .active {
+  border-bottom: #0a0 2px solid;
+  border-radius: 2px;
+}
+
+.cat1 {
+  box-shadow: 0 0.5rem 0.5rem #cbfdd0;
+}
+
+.cat2 {
+  box-shadow: 0 0.5rem 0.5rem #f7e688;
+}
+
+.cat3 {
+  box-shadow: 0 0.5rem 0.5rem #ffc57a;
+}
+
+.cat4 {
+  box-shadow: 0 0.5rem 0.5rem #bcf2fc;
+}
+
+.cat5 {
+  box-shadow: 0 0.5rem 0.5rem #c6dbff;
+}
+
+.cat6 {
+  box-shadow: 0 0.5rem 0.5rem #dacbff;
+}
+
+.cat7 {
+  box-shadow: 0 0.5rem 0.5rem #ffb3a3;
+}
+
+.cat8 {
+  box-shadow: 0 0.5rem 0.5rem #ff9e9e;
+}
+
+.progress {
+  width: 90%;
+}
+
+.footer {
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .info {
+    height: auto;
+    min-height: 300px !important;
+    text-align: center;
+
+    overflow-x: scroll;
+  }
+
+  .main {
+    width: 98%;
+  }
+
+  img {
+    /* text-align: center; */
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+
+  .solve-table {
+    overflow-x: scroll;
+  }
+
+  .card-group {
+    grid-template-columns: 1fr;
+  }
+  .card-group2 {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+  .sec {
+    margin-bottom: 0.7rem;
+  }
+
+  .header {
+    margin-bottom: auto;
+  }
+
+  .accounts {
+    margin-top: 0;
+  }
+}
