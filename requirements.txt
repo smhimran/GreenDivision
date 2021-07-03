@@ -9,6 +9,7 @@ cloudinary==1.25.0
 crispy-bootstrap5==0.3.1
 dj-database-url==0.5.0
 Django==3.2.3
+django-3-jet==1.0.8
 django-crispy-forms==1.11.2
 django-email-verification==0.0.7
 django-environ==0.4.5
