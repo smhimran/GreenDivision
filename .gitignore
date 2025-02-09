@@ -149,11 +149,9 @@ dmypy.json
 .pytype/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
-GreenDivision/env.py
 db.sqlite3
 db.sqlite3
 scrapper_log.txt
 
 
 .vscode/
-keys.json
